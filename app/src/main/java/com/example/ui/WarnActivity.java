@@ -109,6 +109,7 @@ public class WarnActivity<actionBar> extends AppCompatActivity  implements WarnA
         }else {
             use = true;
         }
+
         int warn_id = mWarnAddress.getId();
         mWarnManager.updateWarnUseById(warn_id,use);
     }
