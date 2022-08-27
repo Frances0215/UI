@@ -1,0 +1,458 @@
+@startuml
+
+title __UI's Class Diagram__\n
+
+  namespace com.example.ui {
+    class com.example.ui.AddActivity {
+        + mBtAdd : Button
+        + mEtAddX : EditText
+        + mEtAddY : EditText
+        + mEtName : EditText
+        + mEtRadius : EditText
+        + mRbHigh : RadioButton
+        + mRbLow : RadioButton
+        + mRbMid : RadioButton
+        + isWarnValid()
+        + onOptionsItemSelected()
+        + register_check()
+        # onCreate()
+        # onDestroy()
+        # onPause()
+        # onResume()
+    }
+  }
+  
+
+  namespace com.example.ui {
+    class com.example.ui.EnrollActivity {
+        - mBtCancel : Button
+        - mBtEnroll : Button
+        - mEtName : EditText
+        - mEtPass : EditText
+        - mEtSure : EditText
+        + isUserNameAndPwdValid()
+        + onOptionsItemSelected()
+        + register_check()
+        # onCreate()
+    }
+  }
+  
+
+  namespace com.example.ui {
+    class com.example.ui.ImageUtil {
+        {static} + base64ToImage()
+        {static} + imageToBase64()
+    }
+  }
+  
+
+  namespace com.example.ui {
+    class com.example.ui.LoginActivity {
+        + pwdResetFlag : int
+        - editor : Editor
+        - login_sp : SharedPreferences
+        - mCbRememberPass : CheckBox
+        - mEtAccount : EditText
+        - mEtPassword : EditText
+        - mTvEnroll : TextView
+        - mTvRememberPassword : TextView
+        - mTvReset : TextView
+        - passwordValue : String
+        - pref : SharedPreferences
+        - userNameValue : String
+        + isUserNameAndPwdValid()
+        + login()
+        + onCreate()
+        # onDestroy()
+        # onPause()
+        # onResume()
+    }
+  }
+  
+
+  namespace com.example.ui {
+    class com.example.ui.MainActivity {
+        {static} - DB_NAME : String
+        {static} - DB_VERSION : int
+        # onCreate()
+    }
+  }
+  
+
+  namespace com.example.ui {
+    class com.example.ui.MyDatabaseHelper {
+        {static} + CREATE_MINE : String
+        {static} + CREATE_PEOPLE : String
+        {static} + CREATE_WARN : String
+        - CREATE_TEMP_Mine : String
+        - CREATE_TEMP_People : String
+        - CREATE_TEMP_WARN : String
+        - DROP_MINE : String
+        - DROP_PEOPLE : String
+        - DROP_WARN : String
+        - INSERT_DATA_MINE : String
+        - INSERT_DATA_PEOPLE : String
+        - INSERT_DATA_WARN : String
+        - mContext : Context
+        + MyDatabaseHelper()
+        + insertPeople()
+        + onCreate()
+        + onUpgrade()
+        + query()
+    }
+  }
+  
+
+  namespace com.example.ui {
+    class com.example.ui.ResetPasswordActivity {
+        ~ m_resetpwd_Listener : OnClickListener
+        - mAccount : EditText
+        - mCancelButton : Button
+        - mPwdCheck : EditText
+        - mPwd_new : EditText
+        - mPwd_old : EditText
+        - mSureButton : Button
+        + isUserNameAndPwdValid()
+        + onOptionsItemSelected()
+        + resetpwd_check()
+        # onCreate()
+    }
+  }
+  
+
+  namespace com.example.ui {
+    class com.example.ui.SlideButton {
+        {static} + VIEW_HEIGHT : int
+        - CircleCheckedColor : String
+        - CircleNoCheckedColor : String
+        - CircleStrokeColor : String
+        {static} - MOVE_DISTANCE : float
+        {static} - PADDING : float
+        - StrokeLineColor : String
+        - StrokeSolidColor : String
+        - centerX : float
+        - centerY : float
+        - circleChecked_int : int
+        - circleEndX : float
+        - circleNoCheckedColor_int : int
+        - circleRadius : float
+        - circleStartX : float
+        - circleStrokeColor_int : int
+        {static} - circleStrokeWidth : int
+        - circle_x : float
+        - isBigCircle : boolean
+        - isChecked : boolean
+        - isMove : boolean
+        - mHeight : float
+        - mPaint : Paint
+        - mScroller : Scroller
+        - mWidth : float
+        - preX : float
+        - strokeCheckedSolidColor_int : int
+        - strokeCircleRadius : float
+        - strokeHeight : float
+        - strokeLineColor_int : int
+        {static} - strokeLineWidth : int
+        - strokeNoCheckedSolidColor_int : int
+        - view_height_int : int
+        + SlideButton()
+        + SlideButton()
+        + SlideButton()
+        + computeScroll()
+        {static} + dip2px()
+        + isChecked()
+        + onTouchEvent()
+        + setBigCircleModel()
+        + setChecked()
+        + setOnCheckedListener()
+        + setSmallCircleModel()
+        # onDraw()
+        # onMeasure()
+        # onSizeChanged()
+        - drawCircle()
+        - drawRect()
+        - init()
+    }
+  }
+  
+
+  namespace com.example.ui {
+    interface com.example.ui.SlideButton.SlideButtonOnCheckedListener {
+        {abstract} + onCheckedChangeListener()
+    }
+  }
+  
+
+  namespace com.example.ui {
+    class com.example.ui.UserApp {
+        - mUserId : int
+        + getmUserId()
+        + onCreate()
+        + setmUserId()
+    }
+  }
+  
+
+  namespace com.example.ui {
+    class com.example.ui.UserData {
+        + pwdResetFlag : int
+        - userBirthday : String
+        - userId : int
+        - userName : String
+        - userPhoto : String
+        - userPwd : String
+        - userSex : String
+        - userTelephone : String
+        - userWorkplace : String
+        + UserData()
+        + UserData()
+        + getBirthday()
+        + getUserId()
+        + getUserName()
+        + getUserPhoto()
+        + getUserPwd()
+        + getUserSex()
+        + getUserTelephone()
+        + getUserWorkplace()
+        + setBirthday()
+        + setUserId()
+        + setUserName()
+        + setUserPhoto()
+        + setUserPwd()
+        + setUserSex()
+        + setUserTelephone()
+        + setUserWorkplace()
+    }
+  }
+  
+
+  namespace com.example.ui {
+    class com.example.ui.UserDataManager {
+        {static} + ID : String
+        {static} + USER_BIRTHDAY : String
+        {static} + USER_NAME : String
+        {static} + USER_PHOTO : String
+        {static} + USER_PWD : String
+        {static} + USER_SEX : String
+        {static} + USER_TELEPHONE : String
+        {static} + USER_WORKPLACE : String
+        {static} - DB_NAME : String
+        {static} - DB_VERSION : int
+        {static} - TABLE_NAME : String
+        {static} - TAG : String
+        - mContext : Context
+        - mSQLiteDatabase : SQLiteDatabase
+        + UserDataManager()
+        + closeDataBase()
+        + deleteAllUserDatas()
+        + deleteUserData()
+        + deleteUserDatabyname()
+        + fetchAllUserDatas()
+        + fetchUserData()
+        + findUserByName()
+        + findUserByNameAndPwd()
+        + findUserIdByName()
+        + getStringByColumnName()
+        + insertUserData()
+        + openDataBase()
+        + updateUserData()
+        + updateUserData2()
+        + updateUserDataById()
+    }
+  }
+  
+
+  namespace com.example.ui {
+    class com.example.ui.UserProfileActivity {
+        {static} - REQUEST_CODE_CHOOSE : int
+        {static} - REQUEST_CODE_TAKE : int
+        - birthday : String
+        - birthdayTime : String
+        - imageBase64 : String
+        - imageUri : Uri
+        - mBirthday : TextView
+        - mBtSave : Button
+        - mGender : TextView
+        - mName : TextView
+        - mPhoneNumber : TextView
+        - mPicture : ImageView
+        - mWorkplace : TextView
+        + choosePhoto()
+        + onOptionsItemSelected()
+        + onRequestPermissionsResult()
+        + save()
+        + takePhoto()
+        # onActivityResult()
+        # onCreate()
+        # onPause()
+        # onResume()
+        - displayImage()
+        - doTake()
+        - getDataFromSpf()
+        - getImagePath()
+        - handleImageBeforeApi19()
+        - handleImageOnApi19()
+        - initData()
+        - initView()
+        - openAlbum()
+        - resolveMSFContent()
+        - setListeners()
+    }
+  }
+  
+
+  namespace com.example.ui {
+    class com.example.ui.UserProfileActivity.OnClick {
+        + onClick()
+    }
+  }
+  
+
+  namespace com.example.ui {
+    class com.example.ui.WarnActivity {
+        - mBtAdd : Button
+        - mLvWarn : ListView
+        - warnAddresses : List<WarnAddress>
+        + click()
+        + onItemClick()
+        + onOptionsItemSelected()
+        # onCreate()
+        # onDestroy()
+        # onPause()
+        # onResume()
+        - initWarnAddress()
+    }
+  }
+  
+
+  namespace com.example.ui {
+    class com.example.ui.WarnAddress {
+        - address_x : float
+        - address_y : float
+        - grade : int
+        - id : int
+        - name : String
+        - radius : float
+        - use : boolean
+        + WarnAddress()
+        + WarnAddress()
+        + getAddress_x()
+        + getAddress_y()
+        + getGrade()
+        + getId()
+        + getName()
+        + getRadius()
+        + isUse()
+        + setAddress_x()
+        + setAddress_y()
+        + setGrade()
+        + setId()
+        + setName()
+        + setRadius()
+        + setUse()
+    }
+  }
+  
+
+  namespace com.example.ui {
+    class com.example.ui.WarnAddressAdapter {
+        - mInflater : LayoutInflater
+        - mWarnAddresses : List<WarnAddress>
+        + WarnAddressAdapter()
+        + getCount()
+        + getItem()
+        + getItemId()
+        + getView()
+        + onClick()
+    }
+  }
+  
+
+  namespace com.example.ui {
+    interface com.example.ui.WarnAddressAdapter.Callback {
+        {abstract} + click()
+    }
+  }
+  
+
+  namespace com.example.ui {
+    class com.example.ui.WarnAddressAdapter.ViewHolder {
+        + mCbUse : CheckBox
+        + mTvAddress : TextView
+        + mTvWarn : TextView
+    }
+  }
+  
+
+  namespace com.example.ui {
+    class com.example.ui.WarnManager {
+        {static} + ID : String
+        {static} + WARN_ADDRESS_X : String
+        {static} + WARN_ADDRESS_Y : String
+        {static} + WARN_GRADE : String
+        {static} + WARN_NAME : String
+        {static} + WARN_RADIUS : String
+        {static} + WARN_USE : String
+        {static} - DB_NAME : String
+        {static} - DB_VERSION : int
+        {static} - TABLE_NAME : String
+        {static} - TAG : String
+        - mContext : Context
+        - mSQLiteDatabase : SQLiteDatabase
+        + WarnManager()
+        + closeDataBase()
+        + deleteAllWarnDatas()
+        + deleteWarnData()
+        + deleteWarnDatabyname()
+        + fetchAllWarnDatas()
+        + fetchWarnData()
+        + findWarnByName()
+        + getStringByColumnName()
+        + insertWarnData()
+        + openDataBase()
+        + updateWarnDataById()
+        + updateWarnUseById()
+    }
+  }
+  
+
+  com.example.ui.AddActivity -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.ui.AddActivity o-- com.example.ui.WarnManager : mWarnManager
+  com.example.ui.EnrollActivity -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.ui.EnrollActivity o-- com.example.ui.UserDataManager : mUserDataManager
+  com.example.ui.LoginActivity -up-|> com.example.ui.ui.mine.BaseActivity
+  com.example.ui.LoginActivity o-- com.example.ui.UserDataManager : mUserDataManager
+  com.example.ui.MainActivity -up-|> com.example.ui.ui.mine.BaseActivity
+  com.example.ui.MainActivity o-- com.example.ui.MyDatabaseHelper : dbHelper
+  com.example.ui.MyDatabaseHelper -up-|> android.database.sqlite.SQLiteOpenHelper
+  com.example.ui.ResetPasswordActivity -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.ui.ResetPasswordActivity o-- com.example.ui.UserDataManager : mUserDataManager
+  com.example.ui.SlideButton -up-|> android.view.View
+  com.example.ui.SlideButton o-- com.example.ui.SlideButton.SlideButtonOnCheckedListener : mListener
+  com.example.ui.SlideButton +-down- com.example.ui.SlideButton.SlideButtonOnCheckedListener
+  com.example.ui.UserApp -up-|> android.app.Application
+  com.example.ui.UserDataManager o-- com.example.ui.MyDatabaseHelper : mDatabaseHelper
+  com.example.ui.UserProfileActivity -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.ui.UserProfileActivity o-- com.example.ui.UserDataManager : mUserDataManager
+  com.example.ui.UserProfileActivity +-down- com.example.ui.UserProfileActivity.OnClick
+  com.example.ui.UserProfileActivity.OnClick .up.|> android.view.View.OnClickListener
+  com.example.ui.WarnActivity .up.|> android.widget.AdapterView.OnItemClickListener
+  com.example.ui.WarnActivity .up.|> com.example.ui.WarnAddressAdapter.Callback
+  com.example.ui.WarnActivity -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.ui.WarnActivity o-- com.example.ui.WarnManager : mWarnManager
+  com.example.ui.WarnAddressAdapter .up.|> android.view.View.OnClickListener
+  com.example.ui.WarnAddressAdapter -up-|> android.widget.BaseAdapter
+  com.example.ui.WarnAddressAdapter o-- com.example.ui.WarnAddressAdapter.Callback : mCallback
+  com.example.ui.WarnAddressAdapter +-down- com.example.ui.WarnAddressAdapter.Callback
+  com.example.ui.WarnAddressAdapter +-down- com.example.ui.WarnAddressAdapter.ViewHolder
+  com.example.ui.WarnManager o-- com.example.ui.MyDatabaseHelper : mDatabaseHelper
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

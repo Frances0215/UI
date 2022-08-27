@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.group.GroupFragment"
+    android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/et_search"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/bg_editsearch"
+            android:cursorVisible="true"
+            android:paddingTop="10dp"
+            android:hint="搜索"
+            android:drawableRight="@mipmap/sousuo"
+            />
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:gravity="center_vertical"-->
+<!--        android:orientation="vertical">-->
+
+
+<!--        <TextView-->
+<!--            android:id="@+id/catalog"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="32dp"-->
+<!--            android:background="#E0E0E0"-->
+<!--            android:paddingLeft="10dp"-->
+<!--            android:paddingTop="5dp"-->
+<!--            android:textColor="#454545"-->
+<!--            android:textSize="13sp" />-->
+<!--    </LinearLayout>-->
+
+    <LinearLayout
+        android:id="@+id/lv_people"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ListView
+            android:id="@+id/listview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:divider="#EEEEEE"
+            android:dividerHeight="1.5dp" />
+
+        <!--                        <ImageView-->
+        <!--                android:id="@+id/img"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="match_parent"-->
+        <!--                android:padding="10dp" />-->
+
+        <!--            <TextView-->
+        <!--                android:id="@+id/name"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="match_parent"-->
+        <!--                android:gravity="center_vertical"-->
+        <!--                android:padding="10dp"-->
+        <!--                android:textColor="#336598"-->
+        <!--                android:textSize="16sp" />-->
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="bottom"
+        android:orientation="vertical">
+        <ImageButton
+            android:id="@+id/bt_addpeople"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:src="@drawable/addpeople"
+            android:layout_gravity="right"
+            />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/text_dashboard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:gravity="center_horizontal" />
+</LinearLayout>

@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context=".ui.mine.UserProfileActivity"
+    android:background="@color/bg_grey">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="230dp"
+        android:background="@color/主题蓝">
+
+        <ImageView
+            android:id="@+id/mIvMine"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:layout_centerInParent="true"
+            android:background="@color/white"
+            android:src="@mipmap/ic_launcher_round"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ImageContrastCheck"
+            app:layout_constraintVertical_bias="0.3"/>
+
+        <!--android:src="@mipmap/ic_launcher_round"-->
+
+        <TextView
+            android:id="@+id/mTvName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="李    华"
+            android:textColor="@color/black"
+            android:textSize="28sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/mIvMine" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <RelativeLayout
+        android:id="@+id/mRlMine"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:paddingLeft="10dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/corners_bg"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="2dp"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/tv_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_mine_username"
+            android:drawablePadding="10dp"
+            android:text="个人资料编辑"
+            android:gravity="center_horizontal"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/mTvMine"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/tv_username"
+            android:drawablePadding="5dp"
+            android:drawableRight="@drawable/ic_arrow_right"
+            android:gravity="right"
+            />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/mRlSet"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:paddingLeft="10dp"
+        android:gravity="center_vertical"
+        android:background="@drawable/corners_bg"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="2dp"
+
+        >
+
+        <TextView
+            android:id="@+id/tv_birthday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="10dp"
+            android:drawableStart="@drawable/set"
+            android:text="APP设置"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/mTvSet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/tv_birthday"
+            android:drawableRight="@drawable/ic_arrow_right"
+            android:gravity="right"
+             />
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/mRlUse"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:paddingLeft="10dp"
+        android:gravity="center_vertical"
+        android:background="@drawable/corners_bg"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="2dp"
+        >
+        <TextView
+            android:id="@+id/tv_gender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="10dp"
+            android:drawableStart="@drawable/question"
+            android:text="使用指南"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/mTvUse"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/tv_gender"
+            android:drawableRight="@drawable/ic_arrow_right"
+            android:gravity="right"
+             />
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/mRlAnswer"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:paddingLeft="10dp"
+        android:gravity="center_vertical"
+        android:background="@drawable/corners_bg"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="2dp"
+        >
+
+        <TextView
+            android:id="@+id/tv_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="10dp"
+            android:drawableStart="@drawable/anwser"
+            android:text="联系我们"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/mTvAnswer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/tv_phone"
+            android:drawableRight="@drawable/ic_arrow_right"
+            android:gravity="right"
+             />
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/mRlSuggest"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:paddingLeft="10dp"
+        android:gravity="center_vertical"
+        android:background="@drawable/corners_bg"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="2dp"
+        >
+
+        <TextView
+            android:id="@+id/tv_workplace"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="10dp"
+            android:drawableStart="@drawable/suggestion"
+            android:text="问题与建议"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/mTvSuggest"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
+            android:layout_toRightOf="@id/tv_workplace"
+            android:drawableRight="@drawable/ic_arrow_right"
+            android:gravity="right"
+             />
+    </RelativeLayout>
+
+
+</LinearLayout>
+
+
+
+<!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--    xmlns:tools="http://schemas.android.com/tools"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    tools:context=".ui.mine.MineFragment">-->
+
+<!--    &lt;!&ndash;    <ListView&ndash;&gt;-->
+<!--&lt;!&ndash;        android:id="@+id/listView"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:layout_width="match_parent"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:layout_height="wrap_content"&ndash;&gt;-->
+
+<!--&lt;!&ndash;        app:layout_constraintEnd_toEndOf="parent"&ndash;&gt;-->
+<!--&lt;!&ndash;        app:layout_constraintStart_toStartOf="parent"&ndash;&gt;-->
+<!--&lt;!&ndash;        app:layout_constraintTop_toBottomOf="@+id/frameLayout"&ndash;&gt;-->
+
+<!--&lt;!&ndash;        />&ndash;&gt;-->
+
+<!--    <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--        android:id="@+id/frameLayout"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="280dp"-->
+<!--        android:background="@color/主题蓝"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent">-->
+
+<!--        <ImageView-->
+<!--            android:id="@+id/mIvMine"-->
+<!--            android:layout_width="120dp"-->
+<!--            android:layout_height="130dp"-->
+<!--            android:layout_gravity="center_horizontal"-->
+<!--            android:src="@mipmap/ic_launcher_round"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/mTvName"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="center_horizontal"-->
+<!--            android:layout_marginTop="38dp"-->
+<!--            android:text="李    华"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:textSize="28sp"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/mIvMine" />-->
+
+<!--        <ListView-->
+<!--            android:id="@+id/mLvMine"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="215dp"-->
+<!--            android:background="@color/white" />-->
+<!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+<!--    <RelativeLayout-->
+<!--        android:id="@+id/rl_name_add"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="55dp"-->
+<!--        android:paddingLeft="10dp"-->
+<!--        android:layout_marginTop="30dp"-->
+<!--        android:background="@drawable/corners_bg"-->
+<!--        android:layout_marginLeft="10dp"-->
+<!--        android:layout_marginRight="10dp"-->
+<!--        android:layout_marginBottom="2dp"-->
+<!--        android:gravity="center_vertical">-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/tv_name_add"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:drawablePadding="10dp"-->
+<!--            android:drawableStart="@drawable/ic_mine_username"-->
+<!--            android:text="姓  名"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:textSize="20sp"-->
+<!--            android:drawableLeft="@drawable/ic_mine_username" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/tv_oldername_text"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_toRightOf="@id/tv_name_add"-->
+<!--            android:drawablePadding="5dp"-->
+<!--            android:drawableRight="@drawable/ic_arrow_right"-->
+<!--            android:gravity="right"-->
+<!--            android:textSize="20sp"-->
+<!--            tools:text="李华" />-->
+<!--    </RelativeLayout>-->
+
+<!--    <RelativeLayout-->
+<!--        android:id="@+id/rl_birthday_add"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="55dp"-->
+<!--        android:paddingLeft="10dp"-->
+<!--        android:gravity="center_vertical"-->
+<!--        android:background="@drawable/corners_bg"-->
+<!--        android:layout_marginLeft="10dp"-->
+<!--        android:layout_marginRight="10dp"-->
+<!--        android:layout_marginBottom="2dp"-->
+<!--        >-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/tv_birthday_add"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:drawablePadding="10dp"-->
+<!--            android:drawableStart="@drawable/ic_mine_birthday"-->
+<!--            android:text="生  日"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:textSize="20sp" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/tv_olderbirthday_text"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_toRightOf="@id/tv_birthday_add"-->
+<!--            android:drawableRight="@drawable/ic_arrow_right"-->
+<!--            android:gravity="right"-->
+<!--            tools:text="1989/01/01"-->
+<!--            android:textSize="20sp" />-->
+<!--    </RelativeLayout>-->
+
+<!--    <RelativeLayout-->
+<!--        android:id="@+id/rl_gender_add"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="55dp"-->
+<!--        android:paddingLeft="10dp"-->
+<!--        android:gravity="center_vertical"-->
+<!--        android:background="@drawable/corners_bg"-->
+<!--        android:layout_marginLeft="10dp"-->
+<!--        android:layout_marginRight="10dp"-->
+<!--        android:layout_marginBottom="2dp"-->
+<!--        >-->
+<!--        <TextView-->
+<!--            android:id="@+id/tv_gender_add"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:drawablePadding="10dp"-->
+<!--            android:drawableStart="@drawable/ic_mine_gender"-->
+<!--            android:text="性  别"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:textSize="20sp" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/tv_oldergender_text"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_toRightOf="@id/tv_gender_add"-->
+<!--            android:drawableRight="@drawable/ic_arrow_right"-->
+<!--            android:gravity="right"-->
+<!--            tools:text="男"-->
+<!--            android:textSize="20sp" />-->
+<!--    </RelativeLayout>-->
+
+<!--    <RelativeLayout-->
+<!--        android:id="@+id/rl_phone"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="55dp"-->
+<!--        android:paddingLeft="10dp"-->
+<!--        android:gravity="center_vertical"-->
+<!--        android:background="@drawable/corners_bg"-->
+<!--        android:layout_marginLeft="10dp"-->
+<!--        android:layout_marginRight="10dp"-->
+<!--        android:layout_marginBottom="2dp"-->
+<!--        >-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/tv_phone_add"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:drawablePadding="10dp"-->
+<!--            android:drawableStart="@drawable/ic_mine_phone"-->
+<!--            android:text="手机号"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:textSize="20sp" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/tv_olderphone_text"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_toRightOf="@id/tv_phone_add"-->
+<!--            android:drawableRight="@drawable/ic_arrow_right"-->
+<!--            android:gravity="right"-->
+<!--            android:textSize="20sp"-->
+<!--            tools:text="13712344321" />-->
+<!--    </RelativeLayout>-->
+
+
+<!--</LinearLayout>-->
+

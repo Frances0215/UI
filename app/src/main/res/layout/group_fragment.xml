@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.group.GroupFragment"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal">
+            <SearchView
+                android:id="@+id/searchView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:iconifiedByDefault="false"
+                android:queryHint="请输入搜索内容" />
+
+            <!--            <EditText-->
+            <!--                android:id="@+id/et_search"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="40dp"-->
+            <!--                android:background="@drawable/bg_editsearch"-->
+            <!--                android:cursorVisible="true"-->
+            <!--                android:paddingTop="10dp"-->
+            <!--                android:hint="搜索"-->
+            <!--                />-->
+            <!--            <ImageButton-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:text="sou"-->
+            <!--                android:layout_alignParentRight="true"-->
+            <!--                android:layout_marginRight="10dp"-->
+            <!--                android:background="#ffffff"-->
+            <!--                />-->
+        </RelativeLayout>
+
+
+
+
+        <!--    <LinearLayout-->
+        <!--        android:layout_width="match_parent"-->
+        <!--        android:layout_height="wrap_content"-->
+        <!--        android:gravity="center_vertical"-->
+        <!--        android:orientation="vertical">-->
+
+
+        <!--        <TextView-->
+        <!--            android:id="@+id/catalog"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="32dp"-->
+        <!--            android:background="#E0E0E0"-->
+        <!--            android:paddingLeft="10dp"-->
+        <!--            android:paddingTop="5dp"-->
+        <!--            android:textColor="#454545"-->
+        <!--            android:textSize="13sp" />-->
+        <!--    </LinearLayout>-->
+
+        <LinearLayout
+            android:id="@+id/lv_people"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ListView
+                android:id="@+id/listview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="#EEEEEE"
+                android:dividerHeight="1.5dp" />
+
+            <!--                        <ImageView-->
+            <!--                android:id="@+id/img"-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="match_parent"-->
+            <!--                android:padding="10dp" />-->
+
+            <!--            <TextView-->
+            <!--                android:id="@+id/name"-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="match_parent"-->
+            <!--                android:gravity="center_vertical"-->
+            <!--                android:padding="10dp"-->
+            <!--                android:textColor="#336598"-->
+            <!--                android:textSize="16sp" />-->
+
+        </LinearLayout>
+    </LinearLayout>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_marginRight="30dp"
+            android:layout_marginBottom="90dp"
+            android:backgroundTint="#99C5D5"
+            android:src="@drawable/addbtn"
+            app:elevation="2dp" />
+    </FrameLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+
+        />
+    <!--    <RelativeLayout-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent">-->
+    <!--        <Button-->
+    <!--            android:id="@+id/addBtn"-->
+    <!--            android:layout_width="50dp"-->
+    <!--            android:layout_height="50dp"-->
+    <!--            android:layout_centerInParent="true"-->
+    <!--            android:layout_alignParentBottom="true"-->
+    <!--            android:layout_alignParentRight="true"-->
+
+    <!--            android:background="@drawable/addbtn" />-->
+
+    <!--    </RelativeLayout>-->
+
+</RelativeLayout>

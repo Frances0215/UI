@@ -1,0 +1,192 @@
+@startuml
+
+title __GROUP's Class Diagram__\n
+
+  namespace com.example.ui {
+    namespace ui.group {
+      class com.example.ui.ui.group.AddPeople {
+          {static} - DB_NAME : String
+          {static} - DB_VERSION : int
+          {static} - REQUEST_CODE_CHOOSE : int
+          {static} - REQUEST_CODE_TAKE : int
+          - birthday : String
+          - ib_addback : ImageButton
+          - imageBase64 : String
+          - imageUri : Uri
+          - mAge : TextView
+          - mBirthday : TextView
+          - mGender : TextView
+          - mName : TextView
+          - mPhoneNumber : TextView
+          - mPicture : ImageView
+          - msavebutton : Button
+          + choosePhoto()
+          + getAgeFromBirth()
+          + onRequestPermissionsResult()
+          + takePhoto()
+          # onActivityResult()
+          # onCreate()
+          - displayImage()
+          - doTake()
+          - getImagePath()
+          - handleImageBeforeApi19()
+          - handleImageOnApi19()
+          - initView()
+          - openAlbum()
+          - resolveMSFContent()
+          - setListeners()
+      }
+    }
+  }
+  
+
+  namespace com.example.ui {
+    namespace ui.group {
+      class com.example.ui.ui.group.AddPeople.OnClick {
+          + onClick()
+      }
+    }
+  }
+  
+
+  namespace com.example.ui {
+    namespace ui.group {
+      class com.example.ui.ui.group.GroupFragment {
+          ~ personList : List<Older>
+          {static} - DB_NAME : String
+          {static} - DB_VERSION : int
+          - fab : FloatingActionButton
+          - ib_search : ImageButton
+          - listview : ListView
+          + getPersonList()
+          + onCreateView()
+          + onViewCreated()
+      }
+    }
+  }
+  
+
+  namespace com.example.ui {
+    namespace ui.group {
+      class com.example.ui.ui.group.GroupFragment.MyViewBinder {
+          + setViewValue()
+      }
+    }
+  }
+  
+
+  namespace com.example.ui {
+    namespace ui.group {
+      class com.example.ui.ui.group.GroupViewModel {
+          - mText : MutableLiveData<String>
+          + GroupViewModel()
+          + getText()
+      }
+    }
+  }
+  
+
+  namespace com.example.ui {
+    namespace ui.group {
+      class com.example.ui.ui.group.Older {
+          - age : String
+          - birthtime : String
+          - id : String
+          - name : String
+          - photo : Bitmap
+          - sex : String
+          - telephone : String
+          + Older()
+          + Older()
+          + getAge()
+          + getBirthtime()
+          + getId()
+          + getName()
+          + getPhoto()
+          + getSex()
+          + getTelephone()
+          + setAge()
+          + setBirthtime()
+          + setId()
+          + setName()
+          + setPhoto()
+          + setSex()
+          + setTelephone()
+          + toString()
+      }
+    }
+  }
+  
+
+  namespace com.example.ui {
+    namespace ui.group {
+      class com.example.ui.ui.group.PeopleInformation {
+          {static} - REQUEST_CODE_CHOOSE : int
+          {static} - REQUEST_CODE_TAKE : int
+          - ib_back : ImageButton
+          - imageBase64 : String
+          - imageUri : Uri
+          - iv : ImageView
+          - tv_age : TextView
+          - tv_delete : TextView
+          - tv_name : TextView
+          - tv_name1 : TextView
+          - tv_name2 : TextView
+          - tv_olderbirthday : TextView
+          - tv_sex : TextView
+          - tv_tele : TextView
+          + choosePhoto()
+          + getAgeFromBirth()
+          {static} + getPicFromBytes()
+          + onRequestPermissionsResult()
+          + takePhoto()
+          # onActivityResult()
+          # onCreate()
+          - displayImage()
+          - doTake()
+          - getImagePath()
+          - handleImageBeforeApi19()
+          - handleImageOnApi19()
+          - initView()
+          - openAlbum()
+          - resolveMSFContent()
+          - setListeners()
+      }
+    }
+  }
+  
+
+  namespace com.example.ui {
+    namespace ui.group {
+      class com.example.ui.ui.group.PeopleInformation.OnClick {
+          + onClick()
+      }
+    }
+  }
+  
+
+  com.example.ui.ui.group.AddPeople -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.ui.ui.group.AddPeople o-- com.example.ui.ui.group.Older : older
+  com.example.ui.ui.group.AddPeople +-down- com.example.ui.ui.group.AddPeople.OnClick
+  com.example.ui.ui.group.AddPeople.OnClick .up.|> android.view.View.OnClickListener
+  com.example.ui.ui.group.GroupFragment -up-|> androidx.fragment.app.Fragment
+  com.example.ui.ui.group.GroupFragment o-- com.example.ui.ImageUtil : iut
+  com.example.ui.ui.group.GroupFragment o-- com.example.ui.ui.group.GroupViewModel : dashboardViewModel
+  com.example.ui.ui.group.GroupFragment +-down- com.example.ui.ui.group.GroupFragment.MyViewBinder
+  com.example.ui.ui.group.GroupFragment.MyViewBinder .up.|> android.widget.SimpleAdapter.ViewBinder
+  com.example.ui.ui.group.GroupViewModel -up-|> androidx.lifecycle.ViewModel
+  com.example.ui.ui.group.PeopleInformation -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.ui.ui.group.PeopleInformation o-- com.example.ui.ImageUtil : iut
+  com.example.ui.ui.group.PeopleInformation o-- com.example.ui.ui.group.Older : older
+  com.example.ui.ui.group.PeopleInformation +-down- com.example.ui.ui.group.PeopleInformation.OnClick
+  com.example.ui.ui.group.PeopleInformation.OnClick .up.|> android.view.View.OnClickListener
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

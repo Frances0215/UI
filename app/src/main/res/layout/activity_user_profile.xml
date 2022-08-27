@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context=".ui.mine.UserProfileActivity"
+    android:background="@color/bg_grey">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="230dp"
+        android:background="@color/主题蓝">
+
+        <ImageView
+            android:id="@+id/iv_avatar"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:layout_centerInParent="true"
+
+            android:background="@color/white"
+            android:src="@mipmap/ic_launcher_round"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0"
+            tools:ignore="ImageContrastCheck" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_below="@id/iv_avatar"
+            android:layout_marginBottom="4dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <Button
+                android:id="@+id/btn_camera"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_below="@id/iv_avatar"
+                android:layout_centerHorizontal="true"
+                android:layout_marginRight="50dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/button_theme2"
+                android:onClick="takePhoto"
+                android:text="拍照"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/btn_picture"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/button_theme2"
+                android:onClick="choosePhoto"
+                android:text="相册"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_username"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:paddingLeft="10dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/corners_bg"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="2dp"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/tv_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="10dp"
+            android:drawableStart="@drawable/ic_mine_username"
+            android:text="姓  名"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/tv_username_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/tv_username"
+            android:drawablePadding="5dp"
+            android:drawableRight="@drawable/ic_arrow_right"
+            android:gravity="right"
+            android:textSize="20sp"
+            tools:text="李华" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_birthday"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:paddingLeft="10dp"
+        android:gravity="center_vertical"
+        android:background="@drawable/corners_bg"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="2dp"
+        >
+
+        <TextView
+            android:id="@+id/tv_birthday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="10dp"
+            android:drawableStart="@drawable/ic_mine_birthday"
+            android:text="生  日"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/tv_birthday_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/tv_birthday"
+            android:drawableRight="@drawable/ic_arrow_right"
+            android:gravity="right"
+            tools:text="1989/01/01"
+            android:textSize="20sp" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/rl_gender"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:paddingLeft="10dp"
+        android:gravity="center_vertical"
+        android:background="@drawable/corners_bg"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="2dp"
+        >
+        <TextView
+            android:id="@+id/tv_gender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="10dp"
+            android:drawableStart="@drawable/ic_mine_gender"
+            android:text="性  别"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/tv_gender_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/tv_gender"
+            android:drawableRight="@drawable/ic_arrow_right"
+            android:gravity="right"
+            tools:text="男"
+            android:textSize="20sp" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/rl_phone"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:paddingLeft="10dp"
+        android:gravity="center_vertical"
+        android:background="@drawable/corners_bg"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="2dp"
+        >
+
+        <TextView
+            android:id="@+id/tv_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="10dp"
+            android:drawableStart="@drawable/ic_mine_phone"
+            android:text="手机号"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/tv_phone_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/tv_phone"
+            android:drawableRight="@drawable/ic_arrow_right"
+            android:gravity="right"
+            tools:text="13712344321"
+            android:textSize="20sp" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/rl_workplace"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:paddingLeft="10dp"
+        android:gravity="center_vertical"
+        android:background="@drawable/corners_bg"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="2dp"
+        >
+
+        <TextView
+            android:id="@+id/tv_workplace"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="10dp"
+            android:drawableStart="@drawable/ic_mine_workplace"
+            android:text="工作单位"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/tv_workplace_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
+            android:layout_toRightOf="@id/tv_workplace"
+            android:drawableRight="@drawable/ic_arrow_right"
+            android:gravity="right"
+            tools:text="天府敬老院"
+            android:textSize="20sp" />
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/btn_button"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:text="保存"
+        android:textSize="20sp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:textColor="@color/white"
+        android:background="@drawable/button_theme"
+        />
+</LinearLayout>

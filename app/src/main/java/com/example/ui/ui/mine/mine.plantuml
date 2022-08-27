@@ -1,0 +1,302 @@
+@startuml
+
+title __MINE's Class Diagram__\n
+
+  namespace com.example.ui {
+    namespace ui.mine {
+      class com.example.ui.ui.mine.AppSettingActivity {
+          - accountDelete : TextView
+          - exit : TextView
+          - fondSize : TextView
+          - mSharedPreferences : SharedPreferences
+          - passwordUpdate : TextView
+          - permission : TextView
+          - usernameUpdate : TextView
+          + back_to_mine()
+          # onCreate()
+          # onPause()
+          # onResume()
+          - initView()
+          - setListeners()
+      }
+    }
+  }
+  
+
+  namespace com.example.ui {
+    namespace ui.mine {
+      class com.example.ui.ui.mine.AppSettingActivity.OnClick {
+          + onClick()
+      }
+    }
+  }
+  
+
+  namespace com.example.ui {
+    namespace ui.mine {
+      class com.example.ui.ui.mine.AppUsageActivity {
+          - icons : int[]
+          - questionList : ListView
+          - question_name_list : String[]
+          + back_to_mine()
+          # onCreate()
+      }
+    }
+  }
+  
+
+  namespace com.example.ui {
+    namespace ui.mine {
+      class com.example.ui.ui.mine.AppUsageActivity.QuestionAdapter {
+          + getCount()
+          + getItem()
+          + getItemId()
+          + getView()
+      }
+    }
+  }
+  
+
+  namespace com.example.ui {
+    namespace ui.mine {
+      class com.example.ui.ui.mine.BaseActivity {
+          {static} + typeFace : Typeface
+          + getResources()
+          + onOptionsItemSelected()
+          + setTheme()
+          + setTypeface()
+          # onCreate()
+      }
+    }
+  }
+  
+
+  namespace com.example.ui {
+    namespace ui.mine {
+      class com.example.ui.ui.mine.ChatAdapter {
+          - mContext : Context
+          - mData : List<Message>
+          + ChatAdapter()
+          + Refresh()
+          + getCount()
+          + getItem()
+          + getItemId()
+          + getView()
+      }
+    }
+  }
+  
+
+  namespace com.example.ui {
+    namespace ui.mine {
+      class com.example.ui.ui.mine.ContactUsActivity {
+          + back_to_mine()
+          # onCreate()
+      }
+    }
+  }
+  
+
+  namespace com.example.ui {
+    namespace ui.mine {
+      class com.example.ui.ui.mine.ImageUtil {
+          {static} + base64ToImage()
+          {static} + imageToBase64()
+      }
+    }
+  }
+  
+
+  namespace com.example.ui {
+    namespace ui.mine {
+      class com.example.ui.ui.mine.Message {
+          {static} + MessageType_From : int
+          {static} + MessageType_Time : int
+          {static} + MessageType_To : int
+          - mContent : String
+          - mType : int
+          + Message()
+          + getContent()
+          + getType()
+          + setContent()
+          + setType()
+      }
+    }
+  }
+  
+
+  namespace com.example.ui {
+    namespace ui.mine {
+      class com.example.ui.ui.mine.MineFragment {
+          {static} + MODE_PRIVATE : int
+          - icons : int[]
+          - icons_2 : int[]
+          - ivPhoto : ImageView
+          - listView : ListView
+          - mLvMine : ListView
+          - mine : String[]
+          - set : String[]
+          - tvName : TextView
+          {static} + newInstance()
+          + onCreateView()
+          + onPause()
+          + onResume()
+          + onViewCreated()
+          - getDataFromSpf()
+          - initData()
+          - initView()
+      }
+    }
+  }
+  
+
+  namespace com.example.ui {
+    namespace ui.mine {
+      class com.example.ui.ui.mine.MineFragment.MyBaseAdapter {
+          + getCount()
+          + getItem()
+          + getItemId()
+          + getView()
+      }
+    }
+  }
+  
+
+  namespace com.example.ui {
+    namespace ui.mine {
+      class com.example.ui.ui.mine.MineFragment.MyMineAdapter {
+          + getCount()
+          + getItem()
+          + getItemId()
+          + getView()
+      }
+    }
+  }
+  
+
+  namespace com.example.ui {
+    namespace ui.mine {
+      class com.example.ui.ui.mine.MineViewModel {
+          - mText : MutableLiveData<String>
+          + MineViewModel()
+          + getText()
+      }
+    }
+  }
+  
+
+  namespace com.example.ui {
+    namespace ui.mine {
+      class com.example.ui.ui.mine.QAAActivity {
+          - BtnSend : Button
+          - InputBox : EditText
+          - mData : List<Message>
+          + back_to_mine()
+          # onCreate()
+          - LoadData()
+      }
+    }
+  }
+  
+
+  namespace com.example.ui {
+    namespace ui.mine {
+      class com.example.ui.ui.mine.ThemeActivity {
+          - mVibrator : Vibrator
+          + onClick()
+          + restart()
+          # onCreate()
+          - ResetActivity()
+          - initView()
+      }
+    }
+  }
+  
+
+  namespace com.example.ui {
+    namespace ui.mine {
+      class com.example.ui.ui.mine.UserProfileActivity {
+          {static} - REQUEST_CODE_CHOOSE : int
+          {static} - REQUEST_CODE_TAKE : int
+          - birthday : String
+          - birthdayTime : String
+          - imageBase64 : String
+          - imageUri : Uri
+          - mBirthday : TextView
+          - mBtSave : Button
+          - mGender : TextView
+          - mName : TextView
+          - mPhoneNumber : TextView
+          - mPicture : ImageView
+          - mWorkplace : TextView
+          + back_to_mine()
+          + choosePhoto()
+          + onRequestPermissionsResult()
+          + save()
+          + takePhoto()
+          # onActivityResult()
+          # onCreate()
+          # onPause()
+          # onResume()
+          - displayImage()
+          - doTake()
+          - getDataFromSpf()
+          - getImagePath()
+          - handleImageBeforeApi19()
+          - handleImageOnApi19()
+          - initData()
+          - initView()
+          - openAlbum()
+          - resolveMSFContent()
+          - setListeners()
+      }
+    }
+  }
+  
+
+  namespace com.example.ui {
+    namespace ui.mine {
+      class com.example.ui.ui.mine.UserProfileActivity.OnClick {
+          + onClick()
+      }
+    }
+  }
+  
+
+  com.example.ui.ui.mine.AppSettingActivity -up-|> com.example.ui.ui.mine.BaseActivity
+  com.example.ui.ui.mine.AppSettingActivity o-- com.example.ui.UserDataManager : mUserDataManager
+  com.example.ui.ui.mine.AppSettingActivity +-down- com.example.ui.ui.mine.AppSettingActivity.OnClick
+  com.example.ui.ui.mine.AppSettingActivity.OnClick .up.|> android.view.View.OnClickListener
+  com.example.ui.ui.mine.AppUsageActivity -up-|> com.example.ui.ui.mine.BaseActivity
+  com.example.ui.ui.mine.AppUsageActivity +-down- com.example.ui.ui.mine.AppUsageActivity.QuestionAdapter
+  com.example.ui.ui.mine.AppUsageActivity.QuestionAdapter -up-|> android.widget.BaseAdapter
+  com.example.ui.ui.mine.BaseActivity -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.ui.ui.mine.ChatAdapter -up-|> android.widget.BaseAdapter
+  com.example.ui.ui.mine.ContactUsActivity -up-|> com.example.ui.ui.mine.BaseActivity
+  com.example.ui.ui.mine.MineFragment -up-|> androidx.fragment.app.Fragment
+  com.example.ui.ui.mine.MineFragment o-- com.example.ui.UserDataManager : mUserDataManager
+  com.example.ui.ui.mine.MineFragment o-- com.example.ui.ui.mine.MineViewModel : mViewModel
+  com.example.ui.ui.mine.MineFragment o-- com.example.ui.ui.mine.MineViewModel : notificationsViewModel
+  com.example.ui.ui.mine.MineFragment +-down- com.example.ui.ui.mine.MineFragment.MyBaseAdapter
+  com.example.ui.ui.mine.MineFragment +-down- com.example.ui.ui.mine.MineFragment.MyMineAdapter
+  com.example.ui.ui.mine.MineFragment.MyBaseAdapter -up-|> android.widget.BaseAdapter
+  com.example.ui.ui.mine.MineFragment.MyMineAdapter -up-|> android.widget.BaseAdapter
+  com.example.ui.ui.mine.MineViewModel -up-|> androidx.lifecycle.ViewModel
+  com.example.ui.ui.mine.QAAActivity -up-|> android.app.Activity
+  com.example.ui.ui.mine.QAAActivity o-- com.example.ui.ui.mine.ChatAdapter : mAdapter
+  com.example.ui.ui.mine.ThemeActivity .up.|> android.view.View.OnClickListener
+  com.example.ui.ui.mine.ThemeActivity -up-|> com.example.ui.ui.mine.BaseActivity
+  com.example.ui.ui.mine.UserProfileActivity -up-|> com.example.ui.ui.mine.BaseActivity
+  com.example.ui.ui.mine.UserProfileActivity o-- com.example.ui.UserDataManager : mUserDataManager
+  com.example.ui.ui.mine.UserProfileActivity +-down- com.example.ui.ui.mine.UserProfileActivity.OnClick
+  com.example.ui.ui.mine.UserProfileActivity.OnClick .up.|> android.view.View.OnClickListener
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

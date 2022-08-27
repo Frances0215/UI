@@ -1,0 +1,352 @@
+@startuml
+
+title __UI.APP's Class Diagram__\n
+
+  namespace com.example.ui {
+    class com.example.ui.AddActivity {
+    }
+  }
+  
+
+  namespace com.example.ui {
+    class com.example.ui.BuildConfig {
+    }
+  }
+  
+
+  namespace com.example.ui {
+    class com.example.ui.EnrollActivity {
+    }
+  }
+  
+
+  namespace com.example.ui {
+    class com.example.ui.ImageUtil {
+    }
+  }
+  
+
+  namespace com.example.ui {
+    class com.example.ui.LoginActivity {
+    }
+  }
+  
+
+  namespace com.example.ui {
+    class com.example.ui.MainActivity {
+    }
+  }
+  
+
+  namespace com.example.ui {
+    class com.example.ui.MyDatabaseHelper {
+    }
+  }
+  
+
+  namespace com.example.ui {
+    class com.example.ui.ResetPasswordActivity {
+    }
+  }
+  
+
+  namespace com.example.ui {
+    class com.example.ui.SlideButton {
+    }
+  }
+  
+
+  namespace com.example.ui {
+    class com.example.ui.UserApp {
+    }
+  }
+  
+
+  namespace com.example.ui {
+    class com.example.ui.UserData {
+    }
+  }
+  
+
+  namespace com.example.ui {
+    class com.example.ui.UserDataManager {
+    }
+  }
+  
+
+  namespace com.example.ui {
+    class com.example.ui.UserProfileActivity {
+    }
+  }
+  
+
+  namespace com.example.ui {
+    class com.example.ui.WarnActivity {
+    }
+  }
+  
+
+  namespace com.example.ui {
+    class com.example.ui.WarnAddress {
+    }
+  }
+  
+
+  namespace com.example.ui {
+    class com.example.ui.WarnAddressAdapter {
+    }
+  }
+  
+
+  namespace com.example.ui {
+    class com.example.ui.WarnManager {
+    }
+  }
+  
+
+  namespace com.example.ui {
+    namespace ui.group {
+      class com.example.ui.ui.group.AddPeople {
+      }
+    }
+  }
+  
+
+  namespace com.example.ui {
+    namespace ui.group {
+      class com.example.ui.ui.group.GroupFragment {
+      }
+    }
+  }
+  
+
+  namespace com.example.ui {
+    namespace ui.group {
+      class com.example.ui.ui.group.GroupViewModel {
+      }
+    }
+  }
+  
+
+  namespace com.example.ui {
+    namespace ui.group {
+      class com.example.ui.ui.group.Older {
+      }
+    }
+  }
+  
+
+  namespace com.example.ui {
+    namespace ui.group {
+      class com.example.ui.ui.group.PeopleInformation {
+      }
+    }
+  }
+  
+
+  namespace com.example.ui {
+    namespace ui.location {
+      class com.example.ui.ui.location.LocationFragment {
+      }
+    }
+  }
+  
+
+  namespace com.example.ui {
+    namespace ui.location {
+      class com.example.ui.ui.location.LocationViewModel {
+      }
+    }
+  }
+  
+
+  namespace com.example.ui {
+    namespace ui.mine {
+      class com.example.ui.ui.mine.AppSettingActivity {
+      }
+    }
+  }
+  
+
+  namespace com.example.ui {
+    namespace ui.mine {
+      class com.example.ui.ui.mine.AppUsageActivity {
+      }
+    }
+  }
+  
+
+  namespace com.example.ui {
+    namespace ui.mine {
+      class com.example.ui.ui.mine.BaseActivity {
+      }
+    }
+  }
+  
+
+  namespace com.example.ui {
+    namespace ui.mine {
+      class com.example.ui.ui.mine.ChatAdapter {
+      }
+    }
+  }
+  
+
+  namespace com.example.ui {
+    namespace ui.mine {
+      class com.example.ui.ui.mine.ContactUsActivity {
+      }
+    }
+  }
+  
+
+  namespace com.example.ui {
+    namespace ui.mine {
+      namespace DataClass {
+        class com.example.ui.ui.mine.DataClass.StatcClass {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.example.ui {
+    namespace ui.mine {
+      class com.example.ui.ui.mine.ImageUtil {
+      }
+    }
+  }
+  
+
+  namespace com.example.ui {
+    namespace ui.mine {
+      class com.example.ui.ui.mine.Message {
+      }
+    }
+  }
+  
+
+  namespace com.example.ui {
+    namespace ui.mine {
+      class com.example.ui.ui.mine.MineFragment {
+      }
+    }
+  }
+  
+
+  namespace com.example.ui {
+    namespace ui.mine {
+      class com.example.ui.ui.mine.MineViewModel {
+      }
+    }
+  }
+  
+
+  namespace com.example.ui {
+    namespace ui.mine {
+      class com.example.ui.ui.mine.QAAActivity {
+      }
+    }
+  }
+  
+
+  namespace com.example.ui {
+    namespace ui.mine {
+      class com.example.ui.ui.mine.ThemeActivity {
+      }
+    }
+  }
+  
+
+  namespace com.example.ui {
+    namespace ui.mine {
+      namespace ToolClass {
+        class com.example.ui.ui.mine.ToolClass.DataAccess {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.example.ui {
+    namespace ui.mine {
+      namespace ToolClass {
+        class com.example.ui.ui.mine.ToolClass.L {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.example.ui {
+    namespace ui.mine {
+      class com.example.ui.ui.mine.UserProfileActivity {
+      }
+    }
+  }
+  
+
+  com.example.ui.AddActivity -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.ui.AddActivity o-- com.example.ui.WarnManager : mWarnManager
+  com.example.ui.EnrollActivity -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.ui.EnrollActivity o-- com.example.ui.UserDataManager : mUserDataManager
+  com.example.ui.LoginActivity -up-|> com.example.ui.ui.mine.BaseActivity
+  com.example.ui.LoginActivity o-- com.example.ui.UserDataManager : mUserDataManager
+  com.example.ui.MainActivity -up-|> com.example.ui.ui.mine.BaseActivity
+  com.example.ui.MainActivity o-- com.example.ui.MyDatabaseHelper : dbHelper
+  com.example.ui.MyDatabaseHelper -up-|> android.database.sqlite.SQLiteOpenHelper
+  com.example.ui.ResetPasswordActivity -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.ui.ResetPasswordActivity o-- com.example.ui.UserDataManager : mUserDataManager
+  com.example.ui.SlideButton -up-|> android.view.View
+  com.example.ui.SlideButton o-- com.example.ui.SlideButton.SlideButtonOnCheckedListener : mListener
+  com.example.ui.UserApp -up-|> android.app.Application
+  com.example.ui.UserDataManager o-- com.example.ui.MyDatabaseHelper : mDatabaseHelper
+  com.example.ui.UserProfileActivity -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.ui.UserProfileActivity o-- com.example.ui.UserDataManager : mUserDataManager
+  com.example.ui.WarnActivity .up.|> android.widget.AdapterView.OnItemClickListener
+  com.example.ui.WarnActivity .up.|> com.example.ui.WarnAddressAdapter.Callback
+  com.example.ui.WarnActivity -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.ui.WarnActivity o-- com.example.ui.WarnManager : mWarnManager
+  com.example.ui.WarnAddressAdapter .up.|> android.view.View.OnClickListener
+  com.example.ui.WarnAddressAdapter -up-|> android.widget.BaseAdapter
+  com.example.ui.WarnAddressAdapter o-- com.example.ui.WarnAddressAdapter.Callback : mCallback
+  com.example.ui.WarnManager o-- com.example.ui.MyDatabaseHelper : mDatabaseHelper
+  com.example.ui.ui.group.AddPeople -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.ui.ui.group.AddPeople o-- com.example.ui.ui.group.Older : older
+  com.example.ui.ui.group.GroupFragment -up-|> androidx.fragment.app.Fragment
+  com.example.ui.ui.group.GroupFragment o-- com.example.ui.ImageUtil : iut
+  com.example.ui.ui.group.GroupFragment o-- com.example.ui.ui.group.GroupViewModel : dashboardViewModel
+  com.example.ui.ui.group.GroupViewModel -up-|> androidx.lifecycle.ViewModel
+  com.example.ui.ui.group.PeopleInformation -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.ui.ui.group.PeopleInformation o-- com.example.ui.ImageUtil : iut
+  com.example.ui.ui.group.PeopleInformation o-- com.example.ui.ui.group.Older : older
+  com.example.ui.ui.location.LocationFragment -up-|> androidx.fragment.app.Fragment
+  com.example.ui.ui.location.LocationFragment o-- com.example.ui.ui.location.LocationViewModel : homeViewModel
+  com.example.ui.ui.location.LocationViewModel -up-|> androidx.lifecycle.ViewModel
+  com.example.ui.ui.mine.AppSettingActivity -up-|> com.example.ui.ui.mine.BaseActivity
+  com.example.ui.ui.mine.AppSettingActivity o-- com.example.ui.UserDataManager : mUserDataManager
+  com.example.ui.ui.mine.AppUsageActivity -up-|> com.example.ui.ui.mine.BaseActivity
+  com.example.ui.ui.mine.BaseActivity -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.ui.ui.mine.ChatAdapter -up-|> android.widget.BaseAdapter
+  com.example.ui.ui.mine.ContactUsActivity -up-|> com.example.ui.ui.mine.BaseActivity
+  com.example.ui.ui.mine.MineFragment -up-|> androidx.fragment.app.Fragment
+  com.example.ui.ui.mine.MineFragment o-- com.example.ui.UserDataManager : mUserDataManager
+  com.example.ui.ui.mine.MineFragment o-- com.example.ui.ui.mine.MineViewModel : mViewModel
+  com.example.ui.ui.mine.MineFragment o-- com.example.ui.ui.mine.MineViewModel : notificationsViewModel
+  com.example.ui.ui.mine.MineViewModel -up-|> androidx.lifecycle.ViewModel
+  com.example.ui.ui.mine.QAAActivity -up-|> android.app.Activity
+  com.example.ui.ui.mine.QAAActivity o-- com.example.ui.ui.mine.ChatAdapter : mAdapter
+  com.example.ui.ui.mine.ThemeActivity .up.|> android.view.View.OnClickListener
+  com.example.ui.ui.mine.ThemeActivity -up-|> com.example.ui.ui.mine.BaseActivity
+  com.example.ui.ui.mine.UserProfileActivity -up-|> com.example.ui.ui.mine.BaseActivity
+  com.example.ui.ui.mine.UserProfileActivity o-- com.example.ui.UserDataManager : mUserDataManager
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

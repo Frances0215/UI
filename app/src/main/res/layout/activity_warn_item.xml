@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/mTvWarn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_marginLeft="20dp"
+            android:textSize="20sp"
+            android:textColor="#000"/>
+
+        <TextView
+            android:id="@+id/mTvAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_margin="10dp"
+            android:textSize="15sp"
+            android:textColor="#000"/>
+
+    </LinearLayout>
+
+
+<!--    <com.example.ui.SlideButton-->
+<!--        android:id="@+id/mSbWarn"-->
+<!--        android:layout_width="30dp"-->
+<!--        android:layout_height="30dp"-->
+
+<!--        android:layout_gravity="center_vertical"/>-->
+
+    <CheckBox
+        android:id="@+id/mCbWarn"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="center_vertical"/>
+
+</LinearLayout>

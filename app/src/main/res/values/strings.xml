@@ -1,0 +1,55 @@
+<resources>
+    <string name="app_name">颐定智慧养老定位系统</string>
+    <string name="nav_group">人员信息</string>
+    <string name="nav_location">实时位置</string>
+    <string name="nav_mine">我的</string>
+    <string name="login_success">登录成功</string>
+    <string name="login_fail">登录成功</string>
+    <string name="account_empty">未输入账号</string>
+    <string name="pwd_empty">密码为空</string>
+    <string name="name_exist">当前昵称已被注册</string>
+    <string name="pwd_not_the_same">两次密码输入不相同，请重新输入</string>
+    <string name="register_fail">注册失败</string>
+    <string name="register_success">注册成功</string>
+    <string name="pwd_check_empty">请输入密码</string>
+
+    <string name="resetpwd_fail">修改密码失败</string>
+    <string name="resetpwd_success">修改密码成功</string>
+    <string name="pwd_not_fit_user">用户名和密码不匹配</string>
+
+    <string name="name_not_exist">用户不存在</string>
+    <string name="pwd_new_empty">请输入新密码</string>
+
+    <string name="BtnSend">发送</string>
+
+    <string name="developers1">邓雅文：12312341234</string>
+    <string name="developers2">莫欣文：13737834277</string>
+    <string name="developers3">郑佳妮：12312341234</string>
+
+    <string name="information_edit">个人资料编辑</string>
+    <string name="app_usage">使用指南</string>
+    <string name="app_setting">App设置</string>
+    <string name="contact_us">联系我们</string>
+    <string name="qaa">问题与建议</string>
+
+    <string name="minimum">极小</string>
+    <string name="small">小</string>
+    <string name="normal">标准</string>
+    <string name="big">大</string>
+    <string name="maximum">极大</string>
+    <string name="oversize">超大</string>
+
+    <string name="Founder_blackbody">方正黑体</string>
+    <string name="Founder_smooth_round">方正细圆</string>
+    <string name="STXingkai">华文行楷</string>
+    <string name="STXinwei">华文新魏</string>
+
+    <string name="Shaking_the">震动一下</string>
+    <string name="Length_of_vibration">长短震动</string>
+    <string name="Continuous_vibration">连续震动</string>
+    <string name="Closed_vibration">关闭震动</string>
+    <string name="theme_setting">主题设置</string>
+
+    <item name="one" type="id"></item>
+    <item name="two" type="id"></item>
+</resources>

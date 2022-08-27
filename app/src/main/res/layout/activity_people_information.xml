@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.group.PeopleInformation"
+    android:orientation="vertical">
+
+    <!--    <TextView-->
+    <!--        android:id="@+id/people_infor"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="60dp"-->
+    <!--        android:background="#DDDDDD"-->
+    <!--        android:text="TEXT"-->
+    <!--        android:gravity="center"-->
+    <!--        android:textColor="#000000"-->
+    <!--        android:textSize="28sp"-->
+    <!--        />-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:background="@color/dark_green">
+        <ImageButton
+            android:id="@+id/ib_back"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/back"
+            android:background="@color/dark_green"
+            />
+
+        <TextView
+            android:id="@+id/tv_name1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="个人信息"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+    </RelativeLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="230dp"
+        android:background="@color/主题蓝">
+
+        <ImageView
+            android:id="@+id/iv_photo"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:layout_centerInParent="true"
+
+            android:background="@color/white"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0"
+            tools:ignore="ImageContrastCheck" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_below="@id/iv_photo"
+            android:layout_marginBottom="4dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <Button
+                android:id="@+id/btn_camera_change"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_below="@id/iv_avatar"
+                android:layout_centerHorizontal="true"
+                android:layout_marginRight="50dp"
+                android:layout_marginTop="6dp"
+                android:background="@color/dark_green"
+                android:onClick="takePhoto"
+                android:text="拍照"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/btn_picture_change"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="6dp"
+                android:background="@color/dark_green"
+                android:onClick="choosePhoto"
+                android:text="相册"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <!--    <LinearLayout-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="200dp"-->
+    <!--        android:orientation="vertical"-->
+    <!--        android:gravity="center"-->
+    <!--        android:background="@drawable/bg_information">-->
+
+    <!--        <ImageView-->
+    <!--            android:id="@+id/iv_photo"-->
+    <!--            android:layout_width="60dp"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_gravity="center" />-->
+    <!--        <TextView-->
+    <!--            android:id="@+id/tv_name2"-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:paddingTop="20dp"/>-->
+
+
+    <!--    </LinearLayout>-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="325dp"
+        android:orientation="vertical"
+        android:paddingTop="10dp">
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:background="#ffffff"
+            android:drawableLeft="@drawable/xiaolian"
+            android:drawableRight="@drawable/ic_arrow_right"
+            android:gravity="right"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
+            android:text="TEXT"
+            android:textColor="#000000"
+            android:textSize="26sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:background="#aa000000" />
+
+        <TextView
+            android:id="@+id/tv_tele"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="#ffffff"
+            android:drawableLeft="@drawable/shoujihao"
+            android:drawableRight="@drawable/ic_arrow_right"
+            android:gravity="right"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
+            android:text="TEXT"
+            android:textColor="#000000"
+            android:textSize="26sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="15dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:background="#DDDDDD" />
+
+        <TextView
+            android:id="@+id/tv_olderbirthday"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:background="#ffffff"
+            android:drawableLeft="@drawable/shengri"
+            android:drawableRight="@drawable/ic_arrow_right"
+            android:gravity="right"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
+            android:text="TEXT"
+            android:textColor="#000000"
+            android:textSize="26sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:background="#aa000000" />
+
+        <TextView
+            android:id="@+id/tv_age"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:background="#ffffff"
+            android:drawableLeft="@drawable/nianling"
+            android:gravity="right"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
+            android:paddingRight="35dp"
+            android:text="TEXT"
+            android:textColor="#000000"
+            android:textSize="26sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:background="#aa000000" />
+
+        <TextView
+            android:id="@+id/tv_sex"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:background="#ffffff"
+            android:drawableLeft="@drawable/xingbie"
+            android:drawableRight="@drawable/ic_arrow_right"
+            android:gravity="right"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
+            android:text="TEXT"
+            android:textColor="#000000"
+            android:textSize="26sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:background="#aa000000" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:background="#DDDDDD" />
+        <TextView
+            android:id="@+id/delete"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:background="#ffffff"
+            android:drawableLeft="@drawable/jiebang"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
+            />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:background="#aa000000" />
+    </LinearLayout>
+
+</LinearLayout>
