@@ -53,7 +53,7 @@
                 android:layout_marginTop="6dp"
                 android:background="@drawable/button_theme2"
                 android:onClick="takePhoto"
-                android:text="拍照"
+                android:text="拍照11"
                 android:textColor="@color/white"
                 android:textSize="16sp" />
 
