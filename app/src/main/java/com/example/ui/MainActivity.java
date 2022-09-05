@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.example.ui.ui.group.AddPeople;
 import com.example.ui.ui.group.Older;
@@ -22,15 +23,17 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import java.sql.Connection;
+
 
 public class MainActivity extends BaseActivity {
 
     private MyDatabaseHelper dbHelper;
     private static final int DB_VERSION = 9;
     private static final String DB_NAME = "Info9.dp";
-
+    private static final String DB_NAME2 = "uwb";
     private UserDataManager mUserDataManager;
-
+    private LocateManager mLocateManager;
     @RequiresApi(api = Build.VERSION_CODES.P)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +48,19 @@ public class MainActivity extends BaseActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
+
+//        if (mLocateManager == null) {
+//            mLocateManager = new LocateManager(this);//建立本地数据库
+//        }
+        //mLocateManager.insertDemo();
+//        new Thread(new Runnable() {
+//
+//            @Override
+//            public void run() {
+//                Locate myLocate = mLocateManager.getLocation();
+//                Log.e("myLocate:",""+myLocate.getX()+myLocate.getY()+myLocate.getZ());
+//            }
+//        }).start();
 
 //        if (mUserDataManager == null) {
 //            mUserDataManager = new UserDataManager(this);
