@@ -7,6 +7,11 @@
     tools:context=".ui.location.LocationFragment"
     android:background="@drawable/map5">
 
+    <com.example.ui.ui.location.MainCanvas
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </com.example.ui.ui.location.MainCanvas>
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/mBtWarn"
         android:layout_width="wrap_content"
