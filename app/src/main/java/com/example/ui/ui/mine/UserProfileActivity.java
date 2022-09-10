@@ -27,6 +27,9 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 import android.text.TextUtils;
@@ -79,7 +82,7 @@ public class UserProfileActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         if (mUserDataManager == null) {
             mUserDataManager = new UserDataManager(this);
-            mUserDataManager.openDataBase();                              //建立本地数据库
+            //mUserDataManager.openDataBase();                              //建立本地数据库
         }
         setContentView(R.layout.activity_user_profile);
         initView();
@@ -101,46 +104,85 @@ public class UserProfileActivity extends BaseActivity {
     }
 
     public void save(){
-        String name = mName.getText().toString();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                String name = mName.getText().toString();
 
-        String birthday = mBirthday.getText().toString();
-        String workplace = mWorkplace.getText().toString();
-        String phone = mPhoneNumber.getText().toString();
-        String gender = mGender.getText().toString();
-//        Bitmap bitmap_ = ((BitmapDrawable)mPicture.getDrawable()).getBitmap();
-//        Bitmap bitmap = ImageUtil.compressImage(bitmap_);
-        String photo = ImageUtil.imageToBase64(((BitmapDrawable)mPicture.getDrawable()).getBitmap());
-        //存入数据库中
-        UserData userData = new UserData(name,gender,birthday,phone,workplace,photo);
-        mUserDataManager.updateUserData2(userData);
-        Toast.makeText(this,"已保存修改。",Toast.LENGTH_SHORT).show();
-//        this.finish(); //退出该页面
+                String birthday = mBirthday.getText().toString();
+                String workplace = mWorkplace.getText().toString();
+                String phone = mPhoneNumber.getText().toString();
+                String gender = mGender.getText().toString();
+        //        Bitmap bitmap_ = ((BitmapDrawable)mPicture.getDrawable()).getBitmap();
+        //        Bitmap bitmap = ImageUtil.compressImage(bitmap_);
+                String photo = ImageUtil.imageToBase64(((BitmapDrawable)mPicture.getDrawable()).getBitmap());
+                //存入数据库中
+
+                UserData userData = new UserData(name,gender,birthday,phone,workplace,photo);
+                mUserDataManager.updateUserData2(userData);
+                Looper.prepare();
+                Toast.makeText(UserProfileActivity.this,"已保存修改。",Toast.LENGTH_SHORT).show();
+                Looper.loop();
+                //        this.finish(); //退出该页面
+            }
+        }).start();
     }
 
     @RequiresApi(api = Build.VERSION_CODES.P)
     private void getDataFromSpf(){
         final UserApp app =(UserApp)getApplication();
-        int userId = app.getmUserId();
-        Cursor mCursor = mUserDataManager.fetchUserData(userId);
+        String userId = app.getmUserId();
 
-        CursorWindow cw = new CursorWindow("test", 500000000);
-        AbstractWindowedCursor ac = (AbstractWindowedCursor) mCursor;
-        ac.setWindow(cw);
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                UserData myUser = mUserDataManager.fetchUserData(userId);
+                Message message = new Message();
+                message.obj =myUser;
+                message.what = 0;
+                mHandler.sendMessage(message);
+            }
 
-        String name = mCursor.getString(mCursor.getColumnIndex("name"));
-        String birthday = mCursor.getString(mCursor.getColumnIndex("birthday"));
-        String workplace = mCursor.getString(mCursor.getColumnIndex("workplace"));
-        String phone = mCursor.getString(mCursor.getColumnIndex("telephone"));
-        String gender = mCursor.getString(mCursor.getColumnIndex("sex"));
-        String image64 = mCursor.getString(mCursor.getColumnIndex("photo"));
+        }).start();
+//        CursorWindow cw = new CursorWindow("test", 500000000);
+//        AbstractWindowedCursor ac = (AbstractWindowedCursor) mCursor;
+//        ac.setWindow(cw);
 
-        mName.setText(name);
-        mBirthday.setText(birthday);
-        mWorkplace.setText(workplace);
-        mPhoneNumber.setText(phone);
-        mGender.setText(gender);
-        mPicture.setImageBitmap(ImageUtil.base64ToImage(image64));
+//        String name = mCursor.getString(mCursor.getColumnIndex("name"));
+//        String birthday = mCursor.getString(mCursor.getColumnIndex("birthday"));
+//        String workplace = mCursor.getString(mCursor.getColumnIndex("workplace"));
+//        String phone = mCursor.getString(mCursor.getColumnIndex("telephone"));
+//        String gender = mCursor.getString(mCursor.getColumnIndex("sex"));
+//        String image64 = mCursor.getString(mCursor.getColumnIndex("photo"));
+
+//        mName.setText(myUser.getUserName());
+//        mBirthday.setText(myUser.getBirthday());
+//        mWorkplace.setText(myUser.getUserWorkplace());
+//        mPhoneNumber.setText(myUser.getUserTelephone());
+//        mGender.setText(myUser.getUserSex());
+//        mPicture.setImageBitmap(ImageUtil.base64ToImage(myUser.getUserPhoto()));
     }
+
+    final Handler mHandler = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            switch (msg.what) {
+                case 0:
+                    UserData myUser = (UserData) msg.obj;
+                    mName.setText(myUser.getUserName());
+                    mBirthday.setText(myUser.getBirthday());
+                    mWorkplace.setText(myUser.getUserWorkplace());
+                    mPhoneNumber.setText(myUser.getUserTelephone());
+                    mGender.setText(myUser.getUserSex());
+                    mPicture.setImageBitmap(ImageUtil.base64ToImage(myUser.getUserPhoto()));
+                    break;
+                default:
+                    break;
+            }
+        }
+
+    };
 
     private void setListeners() {
         OnClick onClick = new OnClick();
@@ -462,7 +504,7 @@ public class UserProfileActivity extends BaseActivity {
     @Override
     protected void onPause() {
         if (mUserDataManager != null) {
-            mUserDataManager.closeDataBase();
+            //mUserDataManager.closeDataBase();
             mUserDataManager = null;
         }
         super.onPause();
@@ -472,7 +514,7 @@ public class UserProfileActivity extends BaseActivity {
     protected void onResume() {
         if (mUserDataManager == null) {
             mUserDataManager = new UserDataManager(this);
-            mUserDataManager.openDataBase();
+            //mUserDataManager.openDataBase();
         }
         super.onResume();
     }

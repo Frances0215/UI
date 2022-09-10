@@ -3,7 +3,7 @@ package com.example.ui;
 import android.app.Application;
 
 public class UserApp extends Application {
-    private int mUserId;
+    private String mUserId;
 
     //全局变量用于确定当前是哪一个用户
     @Override
@@ -11,11 +11,11 @@ public class UserApp extends Application {
         super.onCreate();
     }
 
-    public int getmUserId() {
+    public String getmUserId() {
         return mUserId;
     }
 
-    public void setmUserId(int mUserId) {
+    public void setmUserId(String mUserId) {
         this.mUserId = mUserId;
     }
 }

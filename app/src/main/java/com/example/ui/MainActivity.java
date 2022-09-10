@@ -66,8 +66,26 @@ public class MainActivity extends BaseActivity {
 
 //        if (mUserDataManager == null) {
 //            mUserDataManager = new UserDataManager(this);
-//            mUserDataManager.openDataBase();                              //建立本地数据库
+//            //mUserDataManager.openDataBase();                              //建立本地数据库
 //        }
+//        new Thread(new Runnable() {
+//
+//            @Override
+//            public void run() {
+//                String name = "又耳牙";
+//                String gender = "女";
+//                String birthday = "2002-03-28";
+//                String phone = "18778939300";
+//                String workplace = "天府养老院";
+//                String photo = null;
+//                UserData userData = new UserData(name,gender,birthday,phone,workplace,photo);
+//                boolean result = mUserDataManager.updateUserData2(userData);
+//                if(result)
+//                    Log.e("insert:","成功");
+//                else
+//                    Log.e("insert:","失败");
+//            }
+//        }).start();
 
 //        UserData mUser = new UserData("邓茹心","123456789");
 //        long i = mUserDataManager.insertUserData(mUser);
@@ -115,7 +133,7 @@ public class MainActivity extends BaseActivity {
     protected void onResume() {
         if (mUserDataManager == null) {
             mUserDataManager = new UserDataManager(this);
-            mUserDataManager.openDataBase();
+            //mUserDataManager.openDataBase();
         }
         super.onResume();
     }
@@ -126,7 +144,7 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onPause() {
         if (mUserDataManager != null) {
-            mUserDataManager.closeDataBase();
+            //mUserDataManager.closeDataBase();
             mUserDataManager = null;
         }
         super.onPause();

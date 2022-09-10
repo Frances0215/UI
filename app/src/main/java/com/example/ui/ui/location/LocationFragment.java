@@ -61,21 +61,21 @@ public class LocationFragment extends Fragment {
 
         super.onViewCreated(view, savedInstanceState);
 
-        if (mLocateManager == null) {
-            mLocateManager = new LocateManager(getActivity());
-            //mLocateManager.openConnect();                             //建立本地数据库
-        }
+//        if (mLocateManager == null) {
+//            mLocateManager = new LocateManager(getActivity());
+//            //mLocateManager.openConnect();                             //建立本地数据库
+//        }
 
         //数据库操作必须要在一个新的线程中
         new Thread(new Runnable() {
 
             @Override
             public void run() {
-                DBUtils myDBUtil = new DBUtils();
-                mLocateManager.openConnect();
-                //得到最新的一个坐标
-                Locate myLocate = mLocateManager.getLocation();
-                Log.e("myLocate:",""+myLocate.getX()+","+myLocate.getY());
+//                DBUtils myDBUtil = new DBUtils();
+//                mLocateManager.openConnect();
+//                //得到最新的一个坐标
+//                Locate myLocate = mLocateManager.getLocation();
+//                Log.e("myLocate:",""+myLocate.getX()+","+myLocate.getY());
             }
             }).start();
 
@@ -136,10 +136,10 @@ public class LocationFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        if(mLocateManager == null){
-            mLocateManager = new LocateManager(getActivity());
-//            mLocateManager = new LocateManager();
-            mLocateManager.openConnect();
-        }
+//        if(mLocateManager == null){
+//            mLocateManager = new LocateManager(getActivity());
+////            mLocateManager = new LocateManager();
+//            mLocateManager.openConnect();
+//        }
     }
 }

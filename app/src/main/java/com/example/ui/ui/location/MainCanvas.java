@@ -5,6 +5,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.os.Handler;
+import android.os.Message;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -32,49 +33,127 @@ public class MainCanvas extends View {
 
     private LocateManager mLocateManager;
 
-    Handler handler = new Handler();
-    Runnable runnable = new Runnable() {
-
-        @Override
-        public void run() {
-//            if (mLocateManager == null) {
-//                mLocateManager = new LocateManager();
-//                //mLocateManager.openConnect();                             //建立本地数据库
-//            }
-
-//            DBUtils myDBUtil = new DBUtils();
-//            mLocateManager.openConnect();
-//            //得到最新的一个坐标
-//            Locate myLocate = mLocateManager.getLocation();
-//            Log.e("myLocate:",""+myLocate.getX()+","+myLocate.getY());
-
-            time++;
-            invalidate();//告诉主线程重新绘制
-            if (mouseX.peek() != null) {
-                boolean is_add_mouse = Math.abs(mouseX.peek() - mouseCurrentX) < 0.01;//鼠标不动时不记录坐标
-                if (!is_add_mouse) {
-                    mouseX.offer(mouseCurrentX);
-                    mouseY.offer(mouseCurrentY);
-                }
-                if (mouseX.size() > 20 || is_add_mouse) {
-                    mouseX.poll();
-                    mouseY.poll();
-                }
-            } else if (mouse_begin) {
-                mouseX.offer(mouseCurrentX);
-                mouseY.offer(mouseCurrentY);
-            }
-            handler.postDelayed(this, 20);//每20ms循环一次，50fps
+    Handler handler = new Handler(){
+        public void handleMessage(Message msg) {
+//要做的事情
+            super.handleMessage(msg);
         }
     };
 
+//    new Thread(new Runnable() {
+//
+//        public void run() {
+            //Runnable runnable = new Runnable() {
+    public  class MyThread implements Runnable{
+
+                @Override
+                public void run() {
+//                    if (mLocateManager == null) {
+//                        mLocateManager = new LocateManager();
+//                        //mLocateManager.openConnect();                             //建立本地数据库
+//                    }
+//
+//                    DBUtils myDBUtil = new DBUtils();
+//                    mLocateManager.openConnect();
+//                    //得到最新的一个坐标
+//                    Locate myLocate = mLocateManager.getLocation();
+//                    Log.e("myLocate:", "" + myLocate.getX() + "," + myLocate.getY());
+                    while (true) {
+                        if (mLocateManager == null) {
+                            mLocateManager = new LocateManager();
+                        //mLocateManager.openConnect();                             //建立本地数据库
+                        }
+
+                        DBUtils myDBUtil = new DBUtils();
+                        mLocateManager.openConnect();
+                        //得到最新的一个坐标
+                        Locate myLocate = mLocateManager.getLocation();
+                        Log.e("myLocate:", "" + myLocate.getX() + "," + myLocate.getY());
+
+                        time++;
+                        invalidate();//告诉主线程重新绘制
+                        if (mouseX.peek() != null) {
+                            boolean is_add_mouse = Math.abs(mouseX.peek() - mouseCurrentX) < 0.01;//鼠标不动时不记录坐标
+                            if (!is_add_mouse) {
+                                mouseX.offer(mouseCurrentX);
+                                mouseY.offer(mouseCurrentY);
+                            }
+                            if (mouseX.size() > 20 || is_add_mouse) {
+                                mouseX.poll();
+                                mouseY.poll();
+                            }
+                        } else if (mouse_begin) {
+                            mouseX.offer(mouseCurrentX);
+                            mouseY.offer(mouseCurrentY);
+                        }
+                        //handler.postDelayed(this, 20);//每20ms循环一次，50fps
+
+                        try {
+                            Thread.sleep(20);//线程暂停10秒，单位毫秒
+                            Message message=new Message();
+                            message.what=1;
+                            handler.sendMessage(message);//发送消息
+                        } catch (InterruptedException e) {
+// TODO Auto-generated catch block
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            }
+//
+//        }
+//    }).start();
+    //Runnable runnable;
     public MainCanvas(Context context) {
         super(context);
     }
 
     public MainCanvas(Context context, AttributeSet attrs) {
         super(context, attrs);
-        handler.postDelayed(runnable, 20);
+
+//        new Thread(new Runnable() {
+//
+//            public void run() {
+//                runnable = new Runnable() {
+//
+//                    @Override
+//                    public void run() {
+//                        if (mLocateManager == null) {
+//                            mLocateManager = new LocateManager();
+//                            //mLocateManager.openConnect();                             //建立本地数据库
+//                        }
+//
+//                        DBUtils myDBUtil = new DBUtils();
+//                        mLocateManager.openConnect();
+//                        //得到最新的一个坐标
+//                        Locate myLocate = mLocateManager.getLocation();
+//                        Log.e("myLocate:", "" + myLocate.getX() + "," + myLocate.getY());
+//
+//                        time++;
+//                        invalidate();//告诉主线程重新绘制
+//                        if (mouseX.peek() != null) {
+//                            boolean is_add_mouse = Math.abs(mouseX.peek() - mouseCurrentX) < 0.01;//鼠标不动时不记录坐标
+//                            if (!is_add_mouse) {
+//                                mouseX.offer(mouseCurrentX);
+//                                mouseY.offer(mouseCurrentY);
+//                            }
+//                            if (mouseX.size() > 20 || is_add_mouse) {
+//                                mouseX.poll();
+//                                mouseY.poll();
+//                            }
+//                        } else if (mouse_begin) {
+//                            mouseX.offer(mouseCurrentX);
+//                            mouseY.offer(mouseCurrentY);
+//                        }
+//                        handler.postDelayed(this, 20);//每20ms循环一次，50fps
+//                    }
+//                };
+//
+//            }
+//        }).start();
+
+        //handler.postDelayed(runnable, 20);
+        new Thread(new MyThread()).start();
         mPaintMouse = new Paint();//对画笔初始化
         mPaintMouse.setColor(Color.RED);//设置画笔颜色
         mPaintMouse.setStrokeWidth(10);//设置画笔宽度

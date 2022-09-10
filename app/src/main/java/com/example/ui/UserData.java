@@ -3,7 +3,6 @@ package com.example.ui;
 public class UserData {
         private String userName;                  //用户名
         private String userPwd;                   //用户密码
-        private int userId;                       //用户ID号
         private String userSex;
         private String userTelephone;
         private String userWorkplace;
@@ -45,20 +44,11 @@ public class UserData {
         return userBirthday;
     }
 
+
     //设置用户密码
         public void setUserPwd(String userPwd) {     //输入用户密码
             this.userPwd = userPwd;
         }
-        //获取用户id
-        public int getUserId() {                   //获取用户ID号
-            return userId;
-        }
-        //设置用户id
-        public void setUserId(int userId) {       //设置用户ID号
-            this.userId = userId;
-        }
-
-
 
     public void setUserPhoto(String userPhoto) {
         this.userPhoto = userPhoto;
@@ -80,9 +70,9 @@ public class UserData {
         this.userBirthday = birthday;
     }
 
-    public UserData(String userName, String userPwd) {  //这里只采用用户名和密码
+    public UserData(String userTelephone, String userPwd) {  //这里只采用用户名和密码
             super();
-            this.userName = userName;
+            this.userTelephone = userTelephone;
             this.userPwd = userPwd;
         }
 

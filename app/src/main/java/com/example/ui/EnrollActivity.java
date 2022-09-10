@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Looper;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.view.MenuItem;
@@ -49,7 +50,7 @@ public class EnrollActivity extends AppCompatActivity {
         mIvReEye = (ImageView)findViewById(R.id.mIvReEye);
         if (mUserDataManager == null) {
             mUserDataManager = new UserDataManager(this);
-            mUserDataManager.openDataBase();                              //建立本地数据库
+            //mUserDataManager.openDataBase();                              //建立本地数据库
         }
         
         mBtCancel.setOnClickListener(new View.OnClickListener() {
@@ -119,27 +120,44 @@ public class EnrollActivity extends AppCompatActivity {
             String userPwd = mEtPass.getText().toString().trim();
             String userPwdCheck = mEtSure.getText().toString().trim();
             //检查用户是否存在
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
             int count=mUserDataManager.findUserByName(userName);
             //用户已经存在时返回，给出提示文字
             if(count>0){
-                Toast.makeText(this, getString(R.string.name_exist),Toast.LENGTH_SHORT).show();
+                Looper.prepare();
+                Toast.makeText(EnrollActivity.this, getString(R.string.name_exist),Toast.LENGTH_SHORT).show();
+                Looper.loop();
                 return ;
             }
+                }
+
+            }).start();
             if(userPwd.equals(userPwdCheck)==false){     //两次密码输入不一样
                 Toast.makeText(this, getString(R.string.pwd_not_the_same),Toast.LENGTH_SHORT).show();
                 return ;
             } else {
-                UserData mUser = new UserData(userName, userPwd);
-                mUserDataManager.openDataBase();
-                long flag = mUserDataManager.insertUserData(mUser); //新建用户信息
-                if (flag == -1) {
-                    Toast.makeText(this, getString(R.string.register_fail),Toast.LENGTH_SHORT).show();
-                }else{
-                    Toast.makeText(this, getString(R.string.register_success),Toast.LENGTH_SHORT).show();
-                    Intent intent_Register_to_Login = new Intent(EnrollActivity.this,LoginActivity.class) ;    //切换User Activity至Login Activity
-                    startActivity(intent_Register_to_Login);
-                    finish();
-                }
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        UserData mUser = new UserData(userName, userPwd);
+                        //mUserDataManager.openDataBase();
+                        int flag = mUserDataManager.insertUserData(mUser); //新建用户信息
+                        if (flag == -1) {
+                            Looper.prepare();
+                            Toast.makeText(EnrollActivity.this, getString(R.string.register_fail),Toast.LENGTH_SHORT).show();
+                            Looper.loop();
+                        }else{
+                            Looper.prepare();
+                            Toast.makeText(EnrollActivity.this, getString(R.string.register_success),Toast.LENGTH_SHORT).show();
+                            Looper.loop();
+                            Intent intent_Register_to_Login = new Intent(EnrollActivity.this,LoginActivity.class) ;    //切换User Activity至Login Activity
+                            startActivity(intent_Register_to_Login);
+                            finish();
+                        }
+                    }
+                }).start();
             }
         }
     }

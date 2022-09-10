@@ -10,6 +10,8 @@ import android.database.Cursor;
 import android.database.CursorWindow;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,6 +34,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.ui.R;
 import com.example.ui.UserApp;
+import com.example.ui.UserData;
 import com.example.ui.UserDataManager;
 
 public class MineFragment extends Fragment {
@@ -98,20 +101,38 @@ public class MineFragment extends Fragment {
     @RequiresApi(api = Build.VERSION_CODES.P)
     private void getDataFromSpf() {
         final UserApp app =(UserApp)getActivity().getApplication();
-        int userId = app.getmUserId();
-        Cursor mCursor = mUserDataManager.fetchUserData(userId);
+        String userId = app.getmUserId();
 
-        CursorWindow cw = new CursorWindow("test", 500000000);
-        AbstractWindowedCursor ac = (AbstractWindowedCursor) mCursor;
-        ac.setWindow(cw);
-
-        String name = mCursor.getString(mCursor.getColumnIndex("name"));
-        String image64 = mCursor.getString(mCursor.getColumnIndex("photo"));
-
-        tvName.setText(name);
-        ivPhoto.setImageBitmap(ImageUtil.base64ToImage(image64));
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                UserData myUser = mUserDataManager.fetchUserData(userId);
+                Message message = new Message();
+                message.obj =myUser;
+                message.what = 0;
+                mHandler.sendMessage(message);
+            }
+        }).start();
+//        tvName.setText(myUser.getUserName());
+//        ivPhoto.setImageBitmap(ImageUtil.base64ToImage(myUser.getUserPhoto()));
     }
 
+    final Handler mHandler = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            switch (msg.what) {
+                case 0:
+                    UserData myUser = (UserData) msg.obj;
+                    tvName.setText(myUser.getUserName());
+                    ivPhoto.setImageBitmap(ImageUtil.base64ToImage(myUser.getUserPhoto()));
+                    break;
+                default:
+                    break;
+            }
+        }
+
+    };
 
     @RequiresApi(api = Build.VERSION_CODES.P)
     @Override
@@ -120,7 +141,7 @@ public class MineFragment extends Fragment {
 
         if (mUserDataManager == null) {
             mUserDataManager = new UserDataManager(getActivity());
-            mUserDataManager.openDataBase();                              //建立本地数据库
+            //mUserDataManager.openDataBase();                              //建立本地数据库
         }
 
         initView();
@@ -180,7 +201,7 @@ public class MineFragment extends Fragment {
         super.onResume();
         if (mUserDataManager == null) {
             mUserDataManager = new UserDataManager(getActivity());
-            mUserDataManager.openDataBase();                              //建立本地数据库
+            //mUserDataManager.openDataBase();                              //建立本地数据库
         }
         initData();
     }
@@ -218,7 +239,7 @@ public class MineFragment extends Fragment {
     public void onPause() {
         super.onPause();
         if (mUserDataManager != null) {
-            mUserDataManager.closeDataBase();
+           // mUserDataManager.closeDataBase();
             mUserDataManager = null;
         }
     }

@@ -17,13 +17,13 @@ public class LocateManager {
     private Context mContext = null;
     private DBUtils myDBUtil = new DBUtils();
     private Connection myConn;
-    public LocateManager(Context context){
-        mContext = context;
-    }
-
-//    public LocateManager() {
-//
+//    public LocateManager(Context context){
+//        mContext = context;
 //    }
+
+    public LocateManager() {
+
+    }
 
     public void openConnect(){
         myConn = myDBUtil.getConn(DB_NAME);

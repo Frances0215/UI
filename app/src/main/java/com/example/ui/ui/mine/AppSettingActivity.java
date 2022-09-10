@@ -12,6 +12,7 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Looper;
 import android.provider.Settings;
 import android.text.Editable;
 import android.util.Log;
@@ -50,7 +51,7 @@ public class AppSettingActivity extends BaseActivity {
 
         if (mUserDataManager == null) {
             mUserDataManager = new UserDataManager(this);
-            mUserDataManager.openDataBase();                              //建立本地数据库
+            //mUserDataManager.openDataBase();                              //建立本地数据库
         }
 
         initView();
@@ -107,32 +108,47 @@ public class AppSettingActivity extends BaseActivity {
                     AlertDialog.Builder builder2 = new AlertDialog.Builder(AppSettingActivity.this);
                     View v1 = LayoutInflater.from(AppSettingActivity.this).inflate(R.layout.edit_dialog, null);
                     EditText etUsername = v1.findViewById(R.id.et_text);
-                    builder2.setTitle("修改用户名").setView(v1).setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    builder2.setTitle("修改手机号").setView(v1).setPositiveButton("确定", new DialogInterface.OnClickListener() {
                         @RequiresApi(api = Build.VERSION_CODES.P)
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
-                            Toast.makeText(AppSettingActivity.this, "修改成功", Toast.LENGTH_SHORT);
+                            //Toast.makeText(AppSettingActivity.this, "修改成功", Toast.LENGTH_SHORT);
 //                          //修改数据库中的用户名数据
+                            new Thread(new Runnable() {
+                                @Override
+                                public void run() {
                             String userName = etUsername.getText().toString();
                             int count=mUserDataManager.findUserByName(userName);
                             if(count>0){
+                                Looper.prepare();
                                 Toast.makeText(AppSettingActivity.this, "该用户名已存在，请重新输入",Toast.LENGTH_SHORT).show();
+                                Looper.loop();
                             }else if(userName == "") {
+                                Looper.prepare();
                                 Toast.makeText(AppSettingActivity.this, "用户名不能为空",Toast.LENGTH_SHORT).show();
+                                Looper.loop();
                             }else{
                                     final UserApp app =(UserApp)getApplication();
-                                    int userId = app.getmUserId();
-                                    mUserDataManager.updateUserDataById("name",userId,userName);
+                                    String userId = app.getmUserId();
+
+                                    mUserDataManager.updateUserDataById("tele",userId,userName);
+                                    Looper.prepare();
                                     Toast.makeText(AppSettingActivity.this, "用户名修改成功",Toast.LENGTH_SHORT).show();
+                                    Looper.loop();
 
                             }
+                                }
+                            }).start();
                         }
+
                     }).setNegativeButton("取消", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
                             //取消修改
                         }
                     }).show();
+
+
                     break;
 
                 case R.id.tv_password_update:
@@ -198,7 +214,7 @@ public class AppSettingActivity extends BaseActivity {
     @Override
     protected void onPause() {
         if (mUserDataManager != null) {
-            mUserDataManager.closeDataBase();
+            //mUserDataManager.closeDataBase();
             mUserDataManager = null;
         }
         super.onPause();
@@ -208,7 +224,7 @@ public class AppSettingActivity extends BaseActivity {
     protected void onResume() {
         if (mUserDataManager == null) {
             mUserDataManager = new UserDataManager(this);
-            mUserDataManager.openDataBase();
+            //mUserDataManager.openDataBase();
         }
         super.onResume();
     }
