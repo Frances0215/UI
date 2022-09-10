@@ -65,7 +65,7 @@ public class GroupFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        List<Older> list=getPersonList();
+//        List<Older> list=getPersonList();
         //ListViewAdapter adapter=new ListViewAdapter(getActivity(),R.layout.fragment_group,list);
         listview = (ListView)view.findViewById(R.id.listview);
         List<HashMap<String,Object>> data=new ArrayList<HashMap<String,Object>>();
