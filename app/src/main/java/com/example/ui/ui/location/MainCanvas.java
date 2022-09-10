@@ -33,20 +33,20 @@ public class MainCanvas extends View {
     private LocateManager mLocateManager;
 
     Handler handler = new Handler();
-    new Thread(new Runnable() {
+    Runnable runnable = new Runnable() {
 
         @Override
         public void run() {
-            if (mLocateManager == null) {
-                mLocateManager = new LocateManager();
-                //mLocateManager.openConnect();                             //建立本地数据库
-            }
+//            if (mLocateManager == null) {
+//                mLocateManager = new LocateManager();
+//                //mLocateManager.openConnect();                             //建立本地数据库
+//            }
 
-            DBUtils myDBUtil = new DBUtils();
-            mLocateManager.openConnect();
-            //得到最新的一个坐标
-            Locate myLocate = mLocateManager.getLocation();
-            Log.e("myLocate:",""+myLocate.getX()+","+myLocate.getY());
+//            DBUtils myDBUtil = new DBUtils();
+//            mLocateManager.openConnect();
+//            //得到最新的一个坐标
+//            Locate myLocate = mLocateManager.getLocation();
+//            Log.e("myLocate:",""+myLocate.getX()+","+myLocate.getY());
 
             time++;
             invalidate();//告诉主线程重新绘制
@@ -66,8 +66,7 @@ public class MainCanvas extends View {
             }
             handler.postDelayed(this, 20);//每20ms循环一次，50fps
         }
-    }).start();
-
+    };
 
     public MainCanvas(Context context) {
         super(context);
