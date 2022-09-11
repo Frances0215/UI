@@ -20,14 +20,14 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class MainCanvas extends View {
-    private Paint mPaintMouse;//鼠标拖尾画笔
+    private Paint mPaintLocation;//位置拖尾画笔
 
-    private boolean mouse_begin = false;//鼠标是否按下
+    private boolean Location_begin = false;//目标是否移动
 
-    private float mouseCurrentX = 0;//当前鼠标位置X
-    private float mouseCurrentY = 0;//当前鼠标位置Y
-    Queue<Float> mouseX = new LinkedList<Float>();//保存鼠标轨迹X
-    Queue<Float> mouseY = new LinkedList<Float>();//保存鼠标轨迹Y
+    private float LocationCurrentX = 0;//当前位置X
+    private float LocationCurrentY = 0;//当前位置Y
+    Queue<Float> LocationX = new LinkedList<Float>();//保存位置轨迹X
+    Queue<Float> LocationY = new LinkedList<Float>();//保存位置轨迹Y
 
     private int time = 0;//累加时间
 
@@ -40,24 +40,11 @@ public class MainCanvas extends View {
         }
     };
 
-//    new Thread(new Runnable() {
-//
-//        public void run() {
-            //Runnable runnable = new Runnable() {
     public  class MyThread implements Runnable{
 
                 @Override
                 public void run() {
-//                    if (mLocateManager == null) {
-//                        mLocateManager = new LocateManager();
-//                        //mLocateManager.openConnect();                             //建立本地数据库
-//                    }
-//
-//                    DBUtils myDBUtil = new DBUtils();
-//                    mLocateManager.openConnect();
-//                    //得到最新的一个坐标
-//                    Locate myLocate = mLocateManager.getLocation();
-//                    Log.e("myLocate:", "" + myLocate.getX() + "," + myLocate.getY());
+
                     while (true) {
                         if (mLocateManager == null) {
                             mLocateManager = new LocateManager();
@@ -68,25 +55,28 @@ public class MainCanvas extends View {
                         mLocateManager.openConnect();
                         //得到最新的一个坐标
                         Locate myLocate = mLocateManager.getLocation();
+                        LocationCurrentX = (float) myLocate.getX();
+                        LocationCurrentY = (float) myLocate.getY();
                         Log.e("myLocate:", "" + myLocate.getX() + "," + myLocate.getY());
 
                         time++;
                         invalidate();//告诉主线程重新绘制
-                        if (mouseX.peek() != null) {
-                            boolean is_add_mouse = Math.abs(mouseX.peek() - mouseCurrentX) < 0.01;//鼠标不动时不记录坐标
-                            if (!is_add_mouse) {
-                                mouseX.offer(mouseCurrentX);
-                                mouseY.offer(mouseCurrentY);
+                        if (LocationX.peek() != null) {
+                            boolean is_add_Location = Math.abs(LocationX.peek() - LocationCurrentX) < 0.01;//目标不动时不记录坐标
+                            if (!is_add_Location) {
+                                LocationX.offer(LocationCurrentX);
+                                LocationY.offer(LocationCurrentY);
                             }
-                            if (mouseX.size() > 20 || is_add_mouse) {
-                                mouseX.poll();
-                                mouseY.poll();
+                            if (LocationX.size() > 18 || is_add_Location) {
+                                LocationX.poll();
+                                LocationY.poll();
                             }
-                        } else if (mouse_begin) {
-                            mouseX.offer(mouseCurrentX);
-                            mouseY.offer(mouseCurrentY);
                         }
-                        //handler.postDelayed(this, 20);//每20ms循环一次，50fps
+//                        else if (Location_begin) {
+//                            LocationX.offer(LocationCurrentX);
+//                            LocationY.offer(LocationCurrentY);
+//                        }
+//                        handler.postDelayed(this, 20);//每20ms循环一次，50fps
 
                         try {
                             Thread.sleep(20);//线程暂停10秒，单位毫秒
@@ -100,10 +90,7 @@ public class MainCanvas extends View {
                     }
                 }
             }
-//
-//        }
-//    }).start();
-    //Runnable runnable;
+
     public MainCanvas(Context context) {
         super(context);
     }
@@ -111,69 +98,27 @@ public class MainCanvas extends View {
     public MainCanvas(Context context, AttributeSet attrs) {
         super(context, attrs);
 
-//        new Thread(new Runnable() {
-//
-//            public void run() {
-//                runnable = new Runnable() {
-//
-//                    @Override
-//                    public void run() {
-//                        if (mLocateManager == null) {
-//                            mLocateManager = new LocateManager();
-//                            //mLocateManager.openConnect();                             //建立本地数据库
-//                        }
-//
-//                        DBUtils myDBUtil = new DBUtils();
-//                        mLocateManager.openConnect();
-//                        //得到最新的一个坐标
-//                        Locate myLocate = mLocateManager.getLocation();
-//                        Log.e("myLocate:", "" + myLocate.getX() + "," + myLocate.getY());
-//
-//                        time++;
-//                        invalidate();//告诉主线程重新绘制
-//                        if (mouseX.peek() != null) {
-//                            boolean is_add_mouse = Math.abs(mouseX.peek() - mouseCurrentX) < 0.01;//鼠标不动时不记录坐标
-//                            if (!is_add_mouse) {
-//                                mouseX.offer(mouseCurrentX);
-//                                mouseY.offer(mouseCurrentY);
-//                            }
-//                            if (mouseX.size() > 20 || is_add_mouse) {
-//                                mouseX.poll();
-//                                mouseY.poll();
-//                            }
-//                        } else if (mouse_begin) {
-//                            mouseX.offer(mouseCurrentX);
-//                            mouseY.offer(mouseCurrentY);
-//                        }
-//                        handler.postDelayed(this, 20);//每20ms循环一次，50fps
-//                    }
-//                };
-//
-//            }
-//        }).start();
-
-        //handler.postDelayed(runnable, 20);
         new Thread(new MyThread()).start();
-        mPaintMouse = new Paint();//对画笔初始化
-        mPaintMouse.setColor(Color.RED);//设置画笔颜色
-        mPaintMouse.setStrokeWidth(10);//设置画笔宽度
-        mPaintMouse.setAntiAlias(true);//设置抗锯齿
+        mPaintLocation = new Paint();//对画笔初始化
+        mPaintLocation.setColor(Color.RED);//设置画笔颜色
+        mPaintLocation.setStrokeWidth(10);//设置画笔宽度
+        mPaintLocation.setAntiAlias(true);//设置抗锯齿
     }
 
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {//设置触摸事件，手指按下进行记录，手指抬起停止记录
-        mouseCurrentX = event.getX();
-        mouseCurrentY = event.getY();
-        switch (event.getAction()) {
-            case MotionEvent.ACTION_DOWN:
-                mouse_begin = true;
-                break;
-            case MotionEvent.ACTION_UP:
-                mouse_begin = false;
-                break;
-        }
-        return true;
-    }
+//    @Override
+//    public boolean onTouchEvent(MotionEvent event) {//设置触摸事件，手指按下进行记录，手指抬起停止记录
+//        LocationCurrentX = event.getX();
+//        LocationCurrentY = event.getY();
+//        switch (event.getAction()) {
+//            case MotionEvent.ACTION_DOWN:
+//                Location_begin = true;
+//                break;
+//            case MotionEvent.ACTION_UP:
+//                Location_begin = false;
+//                break;
+//        }
+//        return true;
+//    }
 
     @Override
     protected void onDraw(Canvas canvas) {
@@ -181,32 +126,31 @@ public class MainCanvas extends View {
 
 //        int[] color = Bezier.rainBow((float)time % 300 / 300); //画笔同一颜色随时间渐变
 
-        int size = mouseX.size();
+        int size = LocationX.size();
         float x1 = 0,x2 = 0,y1 = 0,y2 = 0;
         for (int i = 0; i < size; i++) {
             float percent = (float)i / size;
-            float res[] = Bezier.bezier((LinkedList)mouseX, (LinkedList)mouseY, percent);
-//            Log.d("MainCanvas",String.valueOf(res));
-            x1 = res[0];
-            y1 = res[1];
+            float res[] = Bezier.bezier((LinkedList)LocationX, (LinkedList)LocationY, percent);
+            x1 = res[0]*1000;
+            y1 = res[1]*1000;
             if(i == 0){
                 x2 = x1;
                 y2 = y1;
                 continue;
             }
             int[] color = Bezier.rainBow((time + percent * 300) % 300 / 300); //画笔不同颜色随时间渐变
-            mPaintMouse.setColor(Color.argb(255, color[0], color[1], color[2]));
-            mPaintMouse.setStrokeWidth((int)(percent * 20));
+            mPaintLocation.setColor(Color.argb(255, color[0], color[1], color[2]));
+            mPaintLocation.setStrokeWidth((int)(percent * 20));
             Log.d("MainCanvas", "x1:"+String.valueOf(x1));
             Log.d("MainCanvas", "y1:"+String.valueOf(y1));
             Log.d("MainCanvas", "x2:"+String.valueOf(x2));
             Log.d("MainCanvas", "y2:"+String.valueOf(y2));
-            canvas.drawLine(x1, y1, x2, y2, mPaintMouse);
+            canvas.drawLine(x1, y1, x2, y2, mPaintLocation);
             x2 = x1;
             y2 = y1;
-            if (i == size - 1) canvas.drawLine(x1, y1, mouseCurrentX, mouseCurrentY, mPaintMouse);//连接最后一段与鼠标
+            if (i == size - 1) canvas.drawLine(x1, y1, LocationCurrentX*1000, LocationCurrentY*1000, mPaintLocation);//连接最后一段与鼠标
         }
-        canvas.drawCircle(mouseCurrentX, mouseCurrentY, 10, mPaintMouse);//绘制鼠标中心
+        canvas.drawCircle(LocationCurrentX*1000, LocationCurrentY*1000, 10, mPaintLocation);//绘制鼠标中心
 
     }
 }
